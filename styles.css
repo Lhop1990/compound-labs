@@ -8,7 +8,7 @@
   --paper-deep:#ECE6D6;
   --ink:#0D0D0D;
   --ink-soft:#5A5853;
-  --ink-faint:#9C9890;
+  --ink-faint:#7C7972;
   --rule:rgba(13,13,13,.14);
   --rule-strong:rgba(13,13,13,.28);
   --vermillion:#C8532B;
@@ -68,6 +68,12 @@ h1,h2,h3,.serif-d,.premise-h,.svc-h,.proc-h,.cta-h,.quote-text,.service-title,.p
 .ft-col a,.ft-col button{min-height:36px;display:inline-flex;align-items:center}
 .nav-cta{min-height:36px;display:inline-flex;align-items:center}
 .btn-text{min-height:36px;display:inline-flex;align-items:center}
+
+/* shared: hero-actions container (used on home + services) */
+.hero-actions{display:flex;flex-direction:column;align-items:flex-end;gap:14px;flex-shrink:0}
+@media (max-width:1100px){
+  .hero-actions{flex-direction:row;align-items:center;justify-self:start;flex-wrap:wrap}
+}
 body{
   background:var(--paper);
   color:var(--ink);
@@ -313,7 +319,7 @@ footer{
   padding:8px 0 12px;color:var(--ink);font-family:var(--sans);font-size:15px;font-weight:400;
   outline:none;transition:border-color .25s;-webkit-appearance:none;border-radius:0;
 }
-.field input::placeholder,.field textarea::placeholder{color:rgba(13,13,13,.25)}
+.field input::placeholder,.field textarea::placeholder{color:rgba(13,13,13,.42)}
 .field input:focus,.field textarea:focus{border-color:var(--ink)}
 .field textarea{resize:none;height:60px}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}

@@ -169,6 +169,37 @@
   .svc-row:hover .svc-arrow{color:var(--vermillion)}
   .svc-row:hover .svc-arrow .arr{transform:translateX(6px)}
 
+  /* ── STUDIO / FOUNDER ───────────────────────────────── */
+  .studio{padding:128px var(--pad);border-top:1px solid var(--rule);position:relative;z-index:2}
+  .studio-inner{max-width:var(--max);margin:0 auto}
+  .studio-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:80px;align-items:start}
+  .studio-h{font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,5.4vw,5.6rem);line-height:.95;letter-spacing:-.022em;color:var(--ink)}
+  .studio-h em{font-style:italic}
+  .studio-meta{
+    margin-top:32px;display:flex;flex-direction:column;gap:14px;
+    font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);
+  }
+  .studio-meta .row{display:flex;align-items:center;gap:14px}
+  .studio-meta .row::before{content:'';width:18px;height:1px;background:var(--vermillion);flex-shrink:0}
+  .studio-body{padding-top:14px;border-top:1px solid var(--rule);margin-top:8px}
+  .studio-body p{font-size:17px;line-height:1.72;color:var(--ink-soft);margin:24px 0 0;max-width:54ch}
+  .studio-body p:first-of-type{margin-top:24px}
+  .studio-body strong{color:var(--ink);font-weight:500;font-style:italic;font-family:var(--serif);font-size:1.05em}
+
+  .studio-creds{
+    display:grid;grid-template-columns:1fr 1fr;gap:0;
+    margin-top:56px;border-top:1px solid var(--rule-strong);
+  }
+  .creds-block{padding:28px 0 0;position:relative}
+  .creds-block:nth-child(2){padding-left:28px;border-left:1px solid var(--rule)}
+  .creds-h{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:16px}
+  .creds-list{list-style:none}
+  .creds-list li{
+    padding:8px 0;border-bottom:1px solid var(--rule);
+    font-family:var(--serif);font-size:1.05rem;letter-spacing:-.005em;color:var(--ink);
+  }
+  .creds-list li:last-child{border-bottom:none}
+
   /* ── METHOD ─────────────────────────────────────────── */
   .proc{padding:128px var(--pad);border-top:1px solid var(--rule);position:relative;z-index:2;background:var(--paper-deep)}
   .proc-inner{max-width:var(--max);margin:0 auto}
@@ -207,7 +238,7 @@
 
   /* ── PAGE-SPECIFIC RESPONSIVE ───────────────────────── */
   @media (max-width:1100px){
-    .premise-grid{grid-template-columns:1fr;gap:48px}
+    .premise-grid,.studio-grid{grid-template-columns:1fr;gap:48px}
     .svc-row{grid-template-columns:48px minmax(0,1fr) minmax(0,1.4fr) 80px;gap:24px}
     .hero-foot{grid-template-columns:1fr;gap:32px;align-items:start}
     .hero-actions{flex-direction:row;align-items:center;justify-self:start}
@@ -223,7 +254,9 @@
     .hero-stage{padding:32px 0 32px}
     .hero-foot{padding:20px 0 28px;gap:24px}
     .scroll-tag{display:none}
-    .premise,.svc,.proc,.quote{padding:80px var(--pad)}
+    .premise,.svc,.proc,.quote,.studio{padding:80px var(--pad)}
+    .studio-creds{grid-template-columns:1fr;gap:0}
+    .creds-block:nth-child(2){border-left:none;border-top:1px solid var(--rule);padding-left:0;margin-top:24px;padding-top:24px}
     .stats{grid-template-columns:1fr;gap:0}
     .stat:nth-child(2){border-left:none;border-top:1px solid var(--rule);padding-left:0;margin-top:28px;padding-top:28px}
     .quote-mark{font-size:5rem}
@@ -269,11 +302,12 @@
     <a href="#why">Why</a>
     <a href="services.html">Practice</a>
     <a href="#method">Method</a>
+    <a href="#studio">Founder</a>
     <a href="#contact" data-modal>Contact</a>
   </div>
   <div class="nav-cta-wrap">
-    <button class="nav-cta" data-modal>Let's chat →</button>
-    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+    <button type="button" class="nav-cta" data-modal>Let's chat →</button>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
       <span class="bar"></span><span class="bar"></span><span class="bar"></span>
     </button>
   </div>
@@ -286,7 +320,8 @@
     <li><a href="#why">Why <span class="num">§ 01</span></a></li>
     <li><a href="services.html">Practice <span class="num">§ 02</span></a></li>
     <li><a href="#method">Method <span class="num">§ 03</span></a></li>
-    <li><button data-modal>Contact <span class="num">→</span></button></li>
+    <li><a href="#studio">Founder <span class="num">§ 04</span></a></li>
+    <li><button type="button" data-modal>Contact <span class="num">→</span></button></li>
   </ul>
   <div class="mobile-menu-foot">
     <span>Compound Labs · 2025</span>
@@ -313,7 +348,7 @@
     <div class="hero-eyebrow"><span class="tag-line"></span>An AI<br>Operations Studio</div>
     <p class="hero-lead">AI strategy, products, agents, and ongoing operations. Built for businesses ready to <em>ship</em>.</p>
     <div class="hero-actions">
-      <button class="btn" data-modal>Get in touch</button>
+      <button type="button" class="btn" data-modal>Get in touch</button>
       <a href="services.html" class="btn-text">View practice →</a>
     </div>
   </div>
@@ -376,7 +411,7 @@
 <!-- PULL QUOTE -->
 <section class="quote">
   <div class="quote-inner">
-    <span class="quote-mark rv">"</span>
+    <span class="quote-mark rv">“</span>
     <p class="quote-text rv d1">The teams that win this decade<br>won't be the ones using AI.<br>They'll be the ones <em>built around it</em>.</p>
     <div class="quote-attr rv d2">Compound Labs · Operating thesis · 2025</div>
   </div>
@@ -390,7 +425,7 @@
         <div class="section-tag rv"><b>§ 02</b> &nbsp;·&nbsp; The Practice</div>
         <h2 class="svc-h rv">What we <em>do</em>.</h2>
       </div>
-      <a href="services.html" class="btn-text rv d1">All six engagements →</a>
+      <a href="services.html" class="btn-text rv d1">All seven engagements →</a>
     </div>
     <div class="svc-list">
       <a href="services.html#strategy" class="svc-row rv">
@@ -464,12 +499,59 @@
   </div>
 </section>
 
+<!-- STUDIO / FOUNDER -->
+<section class="studio" id="studio">
+  <div class="studio-inner">
+    <div class="studio-grid">
+      <div class="rv">
+        <div class="section-tag"><b>§ 04</b> &nbsp;·&nbsp; The Founder</div>
+        <h2 class="studio-h">Fifteen years across<br>the <em>full lifecycle</em>.</h2>
+        <div class="studio-meta">
+          <div class="row">Enterprise · Pre-seed · Pre-product · Pre-revenue</div>
+          <div class="row">Series A · Series B · And everything in between</div>
+        </div>
+      </div>
+      <div class="rv d1">
+        <div class="studio-body">
+          <p>I started in large enterprises before moving into startups. The last decade I've spent inside <strong>pre-seed, pre-product, pre-revenue</strong> companies and the work of getting them to the other side. My current role is leading inside a Series B business growing fast.</p>
+          <p>That arc gives me a working perspective on every function it takes to compound a company from zero. Strategy. People. Operations. Sales. Account management. <strong>I've owned most of them at some point.</strong></p>
+          <p>For the last two years I've been running AI operations inside a fast-growing business. I built and applied the strategies that turned it into an <strong>AI-first organisation</strong>. Compound Labs is where I bring that work to other companies.</p>
+        </div>
+        <div class="studio-creds">
+          <div class="creds-block">
+            <div class="creds-h">Stages worked</div>
+            <ul class="creds-list">
+              <li>Enterprise</li>
+              <li>Pre-seed</li>
+              <li>Pre-product</li>
+              <li>Pre-revenue</li>
+              <li>Series A</li>
+              <li>Series B</li>
+            </ul>
+          </div>
+          <div class="creds-block">
+            <div class="creds-h">Functions owned</div>
+            <ul class="creds-list">
+              <li>Strategy</li>
+              <li>People &amp; ops</li>
+              <li>Sales</li>
+              <li>Account management</li>
+              <li>Product</li>
+              <li>AI operations</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta" id="contact">
   <div class="cta-inner">
     <h2 class="cta-h rv">Curious what AI<br>can do <em>for you<span class="acc">?</span></em></h2>
     <div class="cta-actions rv d1">
-      <button class="btn" data-modal>Get in touch →</button>
+      <button type="button" class="btn" data-modal>Get in touch →</button>
       <p class="cta-sub">A 30-minute call. No pitch deck. Just questions.</p>
     </div>
   </div>
@@ -503,13 +585,13 @@
         <ul>
           <li><a href="#why">Why now</a></li>
           <li><a href="#method">Method</a></li>
-          <li><button data-modal>Contact</button></li>
+          <li><a href="#studio">Founder</a></li>
+          <li><button type="button" data-modal>Contact</button></li>
         </ul>
       </div>
       <div class="ft-col">
         <div class="ft-col-h">Elsewhere</div>
         <ul>
-          <li><a href="#" rel="noopener">LinkedIn</a></li>
           <li><a href="mailto:hello@compoundlabs.co">Email</a></li>
         </ul>
       </div>
@@ -531,7 +613,7 @@
 <!-- MODAL -->
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-h">
   <div class="modal-card">
-    <button class="modal-close" id="modalClose" aria-label="Close">Close ✕</button>
+    <button type="button" class="modal-close" id="modalClose" aria-label="Close">Close <span aria-hidden="true">✕</span></button>
     <div id="modalForm">
       <div class="modal-tag">Begin a conversation</div>
       <h3 class="modal-h" id="modal-h">Let's <em>talk</em><span class="stop">.</span></h3>
