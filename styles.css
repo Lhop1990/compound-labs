@@ -48,6 +48,26 @@ section[id],div[id]:not(.modal):not(.mobile-menu){scroll-margin-top:110px}
 .hero-meta,.page-meta,.svc-num,.proc-meta,.aside-meta,.ft-bottom,.modal-fine,.cta-sub,.stats,.principles-list .pn{
   font-variant-numeric:tabular-nums;
 }
+
+/* text wrapping — modern, prevents widows */
+h1,h2,h3,.serif-d,.premise-h,.svc-h,.proc-h,.cta-h,.quote-text,.service-title,.principles-h,.page-title,.hero-title,.hero-lead,.page-lead,.service-tagline,.modal-h{
+  text-wrap:balance;
+}
+.svc-desc,.premise-body p,.service-desc p,.proc-desc,.ft-brand-tag,.aside-fit,.principles-list .pt,.cta-sub,.modal-fine{
+  text-wrap:pretty;
+}
+
+/* tactile press feedback */
+.btn,.modal-submit{transition:background .25s,border-color .25s,color .25s,transform .15s ease-out}
+.btn:active,.modal-submit:active{transform:translateY(1px) scale(.985)}
+.svc-row,.svc-index li,.principles-list li{transition:padding .35s cubic-bezier(.16,1,.3,1),background .25s,transform .15s ease-out}
+.svc-row:active,.svc-index li:active{transform:scale(.998)}
+
+/* min 40px hit areas on small interactive elements */
+.nav-links a{min-height:40px;display:inline-flex;align-items:center}
+.ft-col a,.ft-col button{min-height:36px;display:inline-flex;align-items:center}
+.nav-cta{min-height:36px;display:inline-flex;align-items:center}
+.btn-text{min-height:36px;display:inline-flex;align-items:center}
 body{
   background:var(--paper);
   color:var(--ink);
