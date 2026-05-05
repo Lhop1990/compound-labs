@@ -50,9 +50,9 @@
     padding:28px 0 36px;border-top:1px solid var(--rule-strong);
   }
   .page-eyebrow{
-    display:flex;align-items:center;gap:12px;
+    display:flex;align-items:center;gap:12px;white-space:nowrap;
     font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
-    color:var(--ink-soft);max-width:18ch;line-height:1.6;
+    color:var(--ink-soft);line-height:1.6;
   }
   .page-eyebrow .tag-line{width:24px;height:1px;background:var(--ink);flex-shrink:0}
   .page-lead{
@@ -192,8 +192,7 @@
   }
   @media (max-width:760px){
     .page-hero{padding:120px var(--pad) 0}
-    .page-meta{grid-template-columns:1fr 1fr;font-size:9px}
-    .page-meta > div:nth-child(3){display:none}
+    .page-eyebrow{white-space:normal}
     .page-stage{padding:36px 0 32px}
     .page-title{font-size:clamp(4rem,28vw,9rem)}
     .page-foot{grid-template-columns:1fr;gap:24px;padding:20px 0 28px}
@@ -246,7 +245,7 @@
     <a href="index.html#why">Why</a>
     <a href="services.html" class="active">Practice</a>
     <a href="index.html#method">Method</a>
-    <a href="index.html#studio">Founder</a>
+    <a href="index.html#studio">About Us</a>
     <a href="#contact" data-modal>Contact</a>
   </div>
   <div class="nav-cta-wrap">
@@ -264,7 +263,7 @@
     <li><a href="index.html#why">Why <span class="num">§ 01</span></a></li>
     <li><a href="services.html">Practice <span class="num">§ 02</span></a></li>
     <li><a href="index.html#method">Method <span class="num">§ 03</span></a></li>
-    <li><a href="index.html#studio">Founder <span class="num">§ 04</span></a></li>
+    <li><a href="index.html#studio">About Us <span class="num">§ 04</span></a></li>
     <li><button type="button" data-modal>Contact <span class="num">→</span></button></li>
   </ul>
   <div class="mobile-menu-foot">
@@ -275,18 +274,12 @@
 
 <!-- PAGE HERO -->
 <section class="page-hero" id="main">
-  <div class="page-meta">
-    <div><b>Vol. 02</b> &nbsp;/&nbsp; The Operating Manual</div>
-    <div>Practice · Seven engagements</div>
-    <div>Edition <b>2025</b> &nbsp;/&nbsp; Remote</div>
-  </div>
-
   <div class="page-stage">
     <h1 class="page-title">Practice<span class="stop">.</span></h1>
   </div>
 
   <div class="page-foot">
-    <div class="page-eyebrow"><span class="tag-line"></span>Seven engagements<br>across the AI lifecycle</div>
+    <div class="page-eyebrow"><span class="tag-line"></span>Seven engagements across the AI lifecycle</div>
     <p class="page-lead">Seven ways we work with businesses ready to ship real <em>AI work</em>. From strategy through to embedded operations.</p>
     <div class="hero-actions">
       <button type="button" class="btn" data-modal>Get in touch</button>
@@ -681,7 +674,7 @@
         <ul>
           <li><a href="index.html#why">Why now</a></li>
           <li><a href="index.html#method">Method</a></li>
-          <li><a href="index.html#studio">Founder</a></li>
+          <li><a href="index.html#studio">About Us</a></li>
           <li><button type="button" data-modal>Contact</button></li>
         </ul>
       </div>
