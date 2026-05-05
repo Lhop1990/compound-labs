@@ -112,6 +112,26 @@
   .stat-fig em{font-style:italic;color:var(--vermillion)}
   .stat-cap{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin-top:14px;line-height:1.6;max-width:24ch}
 
+  /* ── FOUNDATION (ethos) ─────────────────────────────── */
+  .foundation{padding:128px var(--pad);border-top:1px solid var(--rule);position:relative;z-index:2}
+  .foundation-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:80px;align-items:start;max-width:var(--max);margin:0 auto}
+  .foundation-h{font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,5.4vw,5.6rem);line-height:.95;letter-spacing:-.022em;color:var(--ink)}
+  .foundation-h em{font-style:italic;color:var(--vermillion-deep)}
+  .foundation-body{padding-top:14px;border-top:1px solid var(--rule);margin-top:8px}
+  .foundation-body p{font-size:17px;line-height:1.7;color:var(--ink-soft);margin:24px 0 0;max-width:54ch}
+  .foundation-body strong{color:var(--ink);font-weight:500;font-style:italic;font-family:var(--serif);font-size:1.05em}
+
+  .pillars{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+    margin-top:56px;border-top:1px solid var(--rule-strong);
+  }
+  .pillar{padding:28px 24px 0 0;border-right:1px solid var(--rule)}
+  .pillar:last-child{border-right:none;padding-right:0}
+  .pillar:not(:first-child){padding-left:24px}
+  .pillar-num{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--ink-soft);margin-bottom:14px}
+  .pillar-name{font-family:var(--serif);font-size:1.4rem;line-height:1.1;letter-spacing:-.012em;color:var(--ink)}
+  .pillar-name em{font-style:italic}
+
   /* ── PULL QUOTE ─────────────────────────────────────── */
   .quote{padding:140px var(--pad);border-top:1px solid var(--rule);position:relative;z-index:2;background:var(--paper-deep)}
   .quote-inner{max-width:1100px;margin:0 auto}
@@ -238,7 +258,10 @@
 
   /* ── PAGE-SPECIFIC RESPONSIVE ───────────────────────── */
   @media (max-width:1100px){
-    .premise-grid,.studio-grid{grid-template-columns:1fr;gap:48px}
+    .premise-grid,.studio-grid,.foundation-grid{grid-template-columns:1fr;gap:48px}
+    .pillars{grid-template-columns:1fr;gap:0}
+    .pillar{border-right:none;border-bottom:1px solid var(--rule);padding:24px 0!important}
+    .pillar:last-child{border-bottom:none}
     .svc-row{grid-template-columns:48px minmax(0,1fr) minmax(0,1.4fr) 80px;gap:24px}
     .hero-foot{grid-template-columns:1fr;gap:32px;align-items:start}
     .hero-actions{flex-direction:row;align-items:center;justify-self:start}
@@ -253,7 +276,7 @@
     .hero-stage{padding:32px 0 32px}
     .hero-foot{padding:20px 0 28px;gap:24px}
     .scroll-tag{display:none}
-    .premise,.svc,.proc,.quote,.studio{padding:80px var(--pad)}
+    .premise,.svc,.proc,.quote,.studio,.foundation{padding:80px var(--pad)}
     .studio-creds{grid-template-columns:1fr;gap:0}
     .creds-block:nth-child(2){border-left:none;border-top:1px solid var(--rule);padding-left:0;margin-top:24px;padding-top:24px}
     .stats{grid-template-columns:1fr;gap:0}
@@ -317,9 +340,10 @@
   <ul>
     <li><a href="index.html">Home <span class="num">→</span></a></li>
     <li><a href="#why">Why <span class="num">§ 01</span></a></li>
-    <li><a href="services.html">Practice <span class="num">§ 02</span></a></li>
-    <li><a href="#method">Method <span class="num">§ 03</span></a></li>
-    <li><a href="#studio">About Us <span class="num">§ 04</span></a></li>
+    <li><a href="#foundation">Foundation <span class="num">§ 02</span></a></li>
+    <li><a href="services.html">Practice <span class="num">§ 03</span></a></li>
+    <li><a href="#method">Method <span class="num">§ 04</span></a></li>
+    <li><a href="#studio">About Us <span class="num">§ 05</span></a></li>
     <li><button type="button" data-modal>Contact <span class="num">→</span></button></li>
   </ul>
   <div class="mobile-menu-foot">
@@ -397,6 +421,28 @@
   </div>
 </section>
 
+<!-- FOUNDATION / ETHOS -->
+<section class="foundation" id="foundation">
+  <div class="foundation-grid">
+    <div class="rv">
+      <div class="section-tag"><b>§ 02</b> &nbsp;·&nbsp; The Foundation</div>
+      <h2 class="foundation-h">AI <em>compounds</em><br>what already <em>works</em>.</h2>
+    </div>
+    <div class="rv d1">
+      <div class="foundation-body">
+        <p>Most people promise AI is the answer. We don't.</p>
+        <p>AI is a scaling solution, not a foundation. The fundamentals that compound a business haven't changed: <strong>strong people, strong financial systems, strong technical systems</strong>.</p>
+        <p>We build AI on top of those, not in place of them. That's why our work keeps paying off long after we leave. Your team continues to innovate on what we built together, internally and externally, for years.</p>
+      </div>
+      <div class="pillars">
+        <div class="pillar"><div class="pillar-num">01</div><h3 class="pillar-name">Strong <em>people</em></h3></div>
+        <div class="pillar"><div class="pillar-num">02</div><h3 class="pillar-name">Strong <em>financial systems</em></h3></div>
+        <div class="pillar"><div class="pillar-num">03</div><h3 class="pillar-name">Strong <em>technical systems</em></h3></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PULL QUOTE -->
 <section class="quote">
   <div class="quote-inner">
@@ -411,7 +457,7 @@
   <div class="svc-inner">
     <div class="svc-head">
       <div>
-        <div class="section-tag rv"><b>§ 02</b> &nbsp;·&nbsp; The Practice</div>
+        <div class="section-tag rv"><b>§ 03</b> &nbsp;·&nbsp; The Practice</div>
         <h2 class="svc-h rv">What we <em>do</em>.</h2>
       </div>
       <a href="services.html" class="btn-text rv d1">All seven engagements →</a>
@@ -466,7 +512,7 @@
 <!-- METHOD -->
 <section class="proc" id="method">
   <div class="proc-inner">
-    <div class="section-tag rv"><b>§ 03</b> &nbsp;·&nbsp; The Method</div>
+    <div class="section-tag rv"><b>§ 04</b> &nbsp;·&nbsp; The Method</div>
     <h2 class="proc-h rv">We start by<br><em>understanding</em> you.</h2>
     <div class="proc-grid">
       <div class="proc-step rv">
@@ -493,7 +539,7 @@
   <div class="studio-inner">
     <div class="studio-grid">
       <div class="rv">
-        <div class="section-tag"><b>§ 04</b> &nbsp;·&nbsp; About Us</div>
+        <div class="section-tag"><b>§ 05</b> &nbsp;·&nbsp; About Us</div>
         <h2 class="studio-h">Fifteen years across<br>the <em>full lifecycle</em>.</h2>
         <div class="studio-meta">
           <div class="row">Enterprise · Pre-seed · Pre-product · Pre-revenue</div>

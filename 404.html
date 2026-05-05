@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Not found — Compound Labs</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .nf{
+    min-height:100vh;padding:128px var(--pad) 64px;
+    display:flex;flex-direction:column;justify-content:center;
+    position:relative;z-index:2;max-width:var(--max);margin:0 auto;
+  }
+  .nf-tag{
+    font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);
+    margin-bottom:36px;display:flex;align-items:center;gap:12px;
+  }
+  .nf-tag::before{content:'';width:24px;height:1px;background:var(--vermillion)}
+  .nf-h{
+    font-family:var(--serif);font-weight:400;font-style:italic;
+    font-size:clamp(5rem,18vw,18rem);line-height:.85;letter-spacing:-.04em;
+    color:var(--ink);margin-bottom:32px;
+  }
+  .nf-h .stop{color:var(--vermillion);font-style:normal}
+  .nf-lead{
+    font-family:var(--serif);font-size:clamp(1.5rem,2.4vw,2.2rem);line-height:1.2;letter-spacing:-.012em;
+    max-width:38ch;color:var(--ink);margin-bottom:48px;
+  }
+  .nf-lead em{font-style:italic}
+  .nf-actions{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="cl-logo" viewBox="0 0 220 220">
+      <defs>
+        <clipPath id="cl-top"><circle cx="110" cy="80" r="48"/></clipPath>
+        <clipPath id="cl-left"><circle cx="80" cy="132" r="48"/></clipPath>
+      </defs>
+      <g clip-path="url(#cl-top)"><g clip-path="url(#cl-left)"><circle cx="140" cy="132" r="48" fill="currentColor"/></g></g>
+      <g fill="none" stroke="currentColor" stroke-width="1.4">
+        <circle cx="110" cy="80" r="48"/>
+        <circle cx="80" cy="132" r="48"/>
+        <circle cx="140" cy="132" r="48"/>
+      </g>
+      <circle cx="110" cy="113" r="4" fill="#C8532B"/>
+    </symbol>
+  </defs>
+</svg>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<nav id="nav">
+  <a href="/" class="logo">
+    <svg><use href="#cl-logo"/></svg>
+    <span>Compound&nbsp;Labs</span>
+  </a>
+  <div class="nav-links">
+    <a href="/#why">Why</a>
+    <a href="/services.html">Practice</a>
+    <a href="/#method">Method</a>
+    <a href="/#studio">About Us</a>
+  </div>
+  <div class="nav-cta-wrap">
+    <a class="nav-cta" href="/#contact">Let's chat →</a>
+  </div>
+</nav>
+
+<section class="nf" id="main">
+  <div class="nf-tag"><b style="color:var(--ink);font-weight:400">404</b> &nbsp;·&nbsp; Page not found</div>
+  <h1 class="nf-h">Lost the<br>thread<span class="stop">.</span></h1>
+  <p class="nf-lead">The page you're looking for isn't here. <em>It happens.</em> Pick up from somewhere known.</p>
+  <div class="nf-actions">
+    <a class="btn" href="/">Back to the studio</a>
+    <a class="btn-text" href="/services.html">View practice →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-inner">
+    <div class="ft-bottom" style="margin-top:0;border-top:none;padding-top:0">
+      <span>© 2025 Compound Labs Ltd.</span>
+      <span class="mid">An AI Operations Studio</span>
+      <span>compoundlabs.studio</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
