@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Practice — Compound Labs</title>
+<meta name="description" content="Seven ways we work with founders and operators turning their businesses into AI-frontier companies. Strategy, product, agents, automation, change management, advisory, and fractional AI operations.">
+<meta name="theme-color" content="#F4F0E6">
+<meta property="og:title" content="Practice — Compound Labs">
+<meta property="og:description" content="Seven engagements across the AI lifecycle — from strategy through to embedded operations.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Compound Labs">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Practice — Compound Labs">
+<meta name="twitter:description" content="Seven engagements across the AI lifecycle.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* ── PAGE HERO ──────────────────────────────────────── */
+  .page-hero{
+    padding:128px var(--pad) 0;
+    position:relative;z-index:2;
+    border-bottom:1px solid var(--rule);
+  }
+  .page-meta{
+    display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;
+    padding-bottom:14px;border-bottom:1px solid var(--rule-strong);
+    font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);
+  }
+  .page-meta > div:nth-child(2){text-align:center}
+  .page-meta > div:nth-child(3){text-align:right}
+  .page-meta b{font-weight:400;color:var(--ink)}
+
+  .page-stage{
+    padding:80px 0 56px;
+  }
+  .page-title{
+    font-size:clamp(4.5rem,16vw,17rem);
+    line-height:.85;letter-spacing:-.04em;
+    font-style:italic;color:var(--ink);
+  }
+  .page-title .stop{color:var(--vermillion);font-style:normal;letter-spacing:0}
+
+  .page-foot{
+    display:grid;grid-template-columns:auto minmax(0,1fr) auto;
+    gap:56px;align-items:end;
+    padding:28px 0 36px;border-top:1px solid var(--rule-strong);
+  }
+  .page-eyebrow{
+    display:flex;align-items:center;gap:12px;
+    font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-soft);max-width:18ch;line-height:1.6;
+  }
+  .page-eyebrow .tag-line{width:24px;height:1px;background:var(--ink);flex-shrink:0}
+  .page-lead{
+    font-family:var(--serif);font-size:clamp(1.5rem,2.4vw,2.2rem);line-height:1.18;
+    letter-spacing:-.012em;max-width:36ch;color:var(--ink);
+  }
+  .page-lead em{font-style:italic}
+
+  /* ── INDEX (TOC) ────────────────────────────────────── */
+  .svc-index{padding:96px var(--pad);position:relative;z-index:2}
+  .svc-index-inner{max-width:var(--max);margin:0 auto}
+  .svc-index ol{list-style:none;border-top:1px solid var(--rule-strong)}
+  .svc-index li{
+    display:grid;grid-template-columns:64px minmax(0,1fr) 100px;
+    gap:24px;align-items:center;
+    border-bottom:1px solid var(--rule);
+    transition:padding .35s cubic-bezier(.16,1,.3,1),background .25s;
+  }
+  .svc-index li:hover{padding-left:18px;padding-right:18px;background:var(--paper-deep)}
+  .svc-index li a{
+    display:contents;
+    font-family:var(--serif);
+  }
+  .svc-index .num{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--ink-soft);padding:30px 0}
+  .svc-index .name{
+    font-size:clamp(1.6rem,2.8vw,2.4rem);line-height:1;letter-spacing:-.012em;color:var(--ink);
+    padding:30px 0;display:flex;align-items:center;gap:18px;
+  }
+  .svc-index .name em{font-style:italic}
+  .svc-index .name .leader{flex:1;border-bottom:1px dotted var(--rule-strong);align-self:end;margin-bottom:.5em;opacity:.55;transition:opacity .25s}
+  .svc-index li:hover .name .leader{opacity:1}
+  .svc-index .arrow{
+    text-align:right;
+    font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);
+    padding:30px 0;transition:color .2s,transform .25s;
+  }
+  .svc-index li:hover .arrow{color:var(--vermillion);transform:translateX(6px)}
+
+  /* ── SERVICE DETAIL ─────────────────────────────────── */
+  .service{
+    padding:128px var(--pad);position:relative;z-index:2;
+    border-top:1px solid var(--rule);
+    scroll-margin-top:120px;
+  }
+  .service.alt{background:var(--paper-deep)}
+  .service-inner{max-width:var(--max);margin:0 auto}
+  .service-head{
+    display:grid;grid-template-columns:1fr;gap:18px;
+    padding-bottom:64px;
+    border-bottom:1px solid var(--rule-strong);
+    margin-bottom:64px;
+  }
+  .service-num{
+    font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);
+    display:flex;align-items:center;gap:14px;
+  }
+  .service-num::before{content:'';width:24px;height:1px;background:var(--vermillion)}
+  .service-num b{color:var(--ink);font-weight:400}
+  .service-title{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(2.8rem,6vw,6rem);line-height:.95;letter-spacing:-.022em;color:var(--ink);
+  }
+  .service-title em{font-style:italic}
+  .service-tagline{
+    font-family:var(--serif);font-style:italic;
+    font-size:clamp(1.2rem,1.8vw,1.6rem);line-height:1.25;letter-spacing:-.005em;
+    color:var(--ink-soft);max-width:48ch;margin-top:6px;
+  }
+
+  .service-body{
+    display:grid;grid-template-columns:1.1fr 1fr;gap:80px;
+    align-items:start;
+  }
+  .service-desc p{
+    font-size:17px;line-height:1.72;color:var(--ink-soft);margin-bottom:1.4em;max-width:54ch;
+  }
+  .service-desc p:last-child{margin-bottom:0}
+  .service-desc strong{font-family:var(--serif);font-size:1.1em;font-style:italic;font-weight:400;color:var(--ink)}
+
+  .service-aside{
+    display:grid;grid-template-columns:1fr;gap:36px;
+    padding-top:6px;
+  }
+  .aside-block{padding-top:18px;border-top:1px solid var(--rule)}
+  .aside-h{
+    font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);
+    margin-bottom:18px;
+  }
+  .aside-list{list-style:none}
+  .aside-list li{
+    display:grid;grid-template-columns:24px 1fr;gap:8px;
+    padding:10px 0;border-bottom:1px solid var(--rule);
+    font-size:14px;line-height:1.55;color:var(--ink);
+  }
+  .aside-list li:last-child{border-bottom:none}
+  .aside-list li::before{
+    content:'·';font-family:var(--serif);font-size:1.6em;line-height:.6;color:var(--vermillion);
+    grid-column:1;
+  }
+  .aside-meta{
+    display:grid;grid-template-columns:auto 1fr;gap:10px 18px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  }
+  .aside-meta dt{color:var(--ink-soft)}
+  .aside-meta dd{color:var(--ink)}
+  .aside-fit{
+    font-family:var(--serif);font-style:italic;font-size:1.1rem;line-height:1.5;
+    letter-spacing:-.005em;color:var(--ink);max-width:36ch;
+  }
+
+  /* ── PRINCIPLES ─────────────────────────────────────── */
+  .principles{padding:128px var(--pad);border-top:1px solid var(--rule);position:relative;z-index:2}
+  .principles-inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:start}
+  .principles-h{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(2.4rem,4.8vw,4.6rem);line-height:.95;letter-spacing:-.022em;
+  }
+  .principles-h em{font-style:italic}
+  .principles-list{list-style:none;border-top:1px solid var(--rule-strong)}
+  .principles-list li{
+    display:grid;grid-template-columns:48px minmax(0,1fr);gap:24px;
+    padding:28px 0;border-bottom:1px solid var(--rule);align-items:start;
+  }
+  .principles-list .pn{
+    font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--ink-soft);padding-top:6px;
+  }
+  .principles-list .pt{
+    font-family:var(--serif);font-size:clamp(1.3rem,2vw,1.7rem);line-height:1.25;letter-spacing:-.012em;color:var(--ink);
+  }
+  .principles-list .pt em{font-style:italic}
+
+  /* ── RESPONSIVE ─────────────────────────────────────── */
+  @media (max-width:1100px){
+    .service-body{grid-template-columns:1fr;gap:48px}
+    .service-aside{grid-template-columns:1fr 1fr;gap:32px}
+    .principles-inner{grid-template-columns:1fr;gap:48px}
+  }
+  @media (max-width:760px){
+    .page-hero{padding:120px var(--pad) 0}
+    .page-meta{grid-template-columns:1fr 1fr;font-size:9px}
+    .page-meta > div:nth-child(3){display:none}
+    .page-stage{padding:36px 0 32px}
+    .page-title{font-size:clamp(4rem,28vw,9rem)}
+    .page-foot{grid-template-columns:1fr;gap:24px;padding:20px 0 28px}
+    .svc-index{padding:64px var(--pad)}
+    .svc-index li{grid-template-columns:36px 1fr;gap:14px}
+    .svc-index li:hover{padding-left:0;padding-right:0;background:transparent}
+    .svc-index .num{padding:20px 0;font-size:10px}
+    .svc-index .name{padding:20px 0;font-size:1.4rem;gap:10px}
+    .svc-index .name .leader{display:none}
+    .svc-index .arrow{display:none}
+    .service{padding:80px var(--pad);scroll-margin-top:90px}
+    .service-head{padding-bottom:36px;margin-bottom:36px}
+    .service-body{gap:36px}
+    .service-aside{grid-template-columns:1fr;gap:28px}
+    .principles{padding:80px var(--pad)}
+  }
+</style>
+</head>
+<body>
+
+<!-- shared logo svg -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="cl-logo" viewBox="0 0 220 220">
+      <defs>
+        <clipPath id="cl-top"><circle cx="110" cy="80" r="48"/></clipPath>
+        <clipPath id="cl-left"><circle cx="80" cy="132" r="48"/></clipPath>
+      </defs>
+      <g clip-path="url(#cl-top)"><g clip-path="url(#cl-left)"><circle cx="140" cy="132" r="48" fill="currentColor"/></g></g>
+      <g fill="none" stroke="currentColor" stroke-width="1.4">
+        <circle cx="110" cy="80" r="48"/>
+        <circle cx="80" cy="132" r="48"/>
+        <circle cx="140" cy="132" r="48"/>
+      </g>
+      <circle cx="110" cy="113" r="4" fill="#C8532B"/>
+    </symbol>
+  </defs>
+</svg>
+
+<a href="#main" class="skip-link">Skip to content</a>
+<div class="read-progress" id="readProgress"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="logo">
+    <svg><use href="#cl-logo"/></svg>
+    <span>Compound&nbsp;Labs</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html#why">Why</a>
+    <a href="services.html" class="active">Practice</a>
+    <a href="index.html#method">Method</a>
+    <a href="#contact" data-modal>Contact</a>
+  </div>
+  <div class="nav-cta-wrap">
+    <button class="nav-cta" data-modal>Let's chat →</button>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="index.html">Home <span class="num">→</span></a></li>
+    <li><a href="index.html#why">Why <span class="num">§ 01</span></a></li>
+    <li><a href="services.html">Practice <span class="num">§ 02</span></a></li>
+    <li><a href="index.html#method">Method <span class="num">§ 03</span></a></li>
+    <li><button data-modal>Contact <span class="num">→</span></button></li>
+  </ul>
+  <div class="mobile-menu-foot">
+    <span>Compound Labs · 2025</span>
+    <span>Remote</span>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero" id="main">
+  <div class="page-meta">
+    <div><b>Vol. 02</b> &nbsp;/&nbsp; The Operating Manual</div>
+    <div>Practice · Seven engagements</div>
+    <div>Edition <b>2025</b> &nbsp;/&nbsp; Remote</div>
+  </div>
+
+  <div class="page-stage">
+    <h1 class="page-title">Practice<span class="stop">.</span></h1>
+  </div>
+
+  <div class="page-foot">
+    <div class="page-eyebrow"><span class="tag-line"></span>Seven engagements<br>across the AI lifecycle</div>
+    <p class="page-lead">Seven ways we work with founders and operators turning their businesses into <em>AI-frontier companies</em> — from strategy through to embedded operations.</p>
+    <div class="hero-actions">
+      <button class="btn" data-modal>Get in touch</button>
+    </div>
+  </div>
+</section>
+
+<!-- INDEX -->
+<section class="svc-index">
+  <div class="svc-index-inner">
+    <div class="section-tag rv"><b>§ Index</b> &nbsp;·&nbsp; Seven engagements</div>
+    <ol>
+      <li class="rv"><a href="#strategy">
+        <span class="num">§ 01</span>
+        <span class="name">Strategy &amp; <em>Operations</em><span class="leader"></span></span>
+        <span class="arrow">Read →</span>
+      </a></li>
+      <li class="rv"><a href="#product">
+        <span class="num">§ 02</span>
+        <span class="name">Product <em>Development</em><span class="leader"></span></span>
+        <span class="arrow">Read →</span>
+      </a></li>
+      <li class="rv"><a href="#agents">
+        <span class="num">§ 03</span>
+        <span class="name">Agent <em>Development</em><span class="leader"></span></span>
+        <span class="arrow">Read →</span>
+      </a></li>
+      <li class="rv"><a href="#automation">
+        <span class="num">§ 04</span>
+        <span class="name">AI <em>Automations</em><span class="leader"></span></span>
+        <span class="arrow">Read →</span>
+      </a></li>
+      <li class="rv"><a href="#change">
+        <span class="num">§ 05</span>
+        <span class="name">AI Change <em>Management</em><span class="leader"></span></span>
+        <span class="arrow">Read →</span>
+      </a></li>
+      <li class="rv"><a href="#advisory">
+        <span class="num">§ 06</span>
+        <span class="name">Ongoing <em>Advisory</em><span class="leader"></span></span>
+        <span class="arrow">Read →</span>
+      </a></li>
+      <li class="rv"><a href="#fractional">
+        <span class="num">§ 07</span>
+        <span class="name">Fractional <em>AI Ops</em><span class="leader"></span></span>
+        <span class="arrow">Read →</span>
+      </a></li>
+    </ol>
+  </div>
+</section>
+
+<!-- §01 STRATEGY & OPERATIONS -->
+<section class="service" id="strategy">
+  <div class="service-inner">
+    <header class="service-head rv">
+      <div class="service-num"><b>§ 01</b> &nbsp;·&nbsp; Strategy</div>
+      <h2 class="service-title">Strategy &amp; <em>Operations</em></h2>
+      <p class="service-tagline">AI inside the way the business actually runs.</p>
+    </header>
+    <div class="service-body">
+      <div class="service-desc rv">
+        <p>For executive teams looking at AI through an operations lens — where it fits in the org, what it changes about how teams work, and what to invest in <strong>first</strong>. Strategy that survives contact with reality.</p>
+        <p>We map the opportunity space against your operational realities — your data, your team, your customers — and produce a prioritised roadmap that ties AI investment to outcomes you can measure. No 50-slide decks. A working plan, fit for the room you'll defend it in.</p>
+      </div>
+      <aside class="service-aside rv d1">
+        <div class="aside-block">
+          <div class="aside-h">What's included</div>
+          <ul class="aside-list">
+            <li>Opportunity mapping across the business</li>
+            <li>Capability &amp; data-readiness assessment</li>
+            <li>Prioritisation framework with scoring</li>
+            <li>Operating-model recommendations</li>
+            <li>Investment roadmap with sequencing</li>
+          </ul>
+        </div>
+        <div class="aside-block">
+          <div class="aside-h">Engagement</div>
+          <dl class="aside-meta">
+            <dt>Duration</dt><dd>4–8 weeks</dd>
+            <dt>Pricing</dt><dd>Fixed fee</dd>
+            <dt>Output</dt><dd>Roadmap &amp; brief</dd>
+          </dl>
+        </div>
+        <div class="aside-block">
+          <div class="aside-h">Best when</div>
+          <p class="aside-fit">You're at the strategic decision point — what to invest in, when, and through whom.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- §02 PRODUCT DEVELOPMENT -->
+<section class="service alt" id="product">
+  <div class="service-inner">
+    <header class="service-head rv">
+      <div class="service-num"><b>§ 02</b> &nbsp;·&nbsp; Build</div>
+      <h2 class="service-title">Product <em>Development</em></h2>
+      <p class="service-tagline">AI-native products, shipped — not bolted on.</p>
+    </header>
+    <div class="service-body">
+      <div class="service-desc rv">
+        <p>For founders and product teams building software where AI is the core capability — not a feature added late. We work end-to-end: from concept and architecture through evaluation framework and shipped MVP. The output is a working product, not a prototype.</p>
+        <p>Our team has built and shipped AI-first products at zero-to-one and at scale. We bring senior product, engineering, and AI judgement to the room — and we leave you with a system your team owns and can extend without us.</p>
+      </div>
+      <aside class="service-aside rv d1">
+        <div class="aside-block">
+          <div class="aside-h">What's included</div>
+          <ul class="aside-list">
+            <li>Product discovery &amp; user research</li>
+            <li>Technical architecture &amp; AI system design</li>
+            <li>MVP build to production-grade</li>
+            <li>Evaluation &amp; quality framework</li>
+            <li>Launch support &amp; team handoff</li>
+          </ul>
+        </div>
+        <div class="aside-block">
+          <div class="aside-h">Engagement</div>
+          <dl class="aside-meta">
+            <dt>Duration</dt><dd>8–16 weeks</dd>
+            <dt>Pricing</dt><dd>Fixed phases</dd>
+            <dt>Output</dt><dd>Shipped product</dd>
+          </dl>
+        </div>
+        <div class="aside-block">
+          <div class="aside-h">Best when</div>
+          <p class="aside-fit">You're building something AI-first and want senior people who've shipped it before.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- §03 AGENT DEVELOPMENT -->
+<section class="service" id="agents">
+  <div class="service-inner">
+    <header class="service-head rv">
+      <div class="service-num"><b>§ 03</b> &nbsp;·&nbsp; Build</div>
+      <h2 class="service-title">Agent <em>Development</em></h2>
+      <p class="service-tagline">Working AI agents — scoped, built, handed over.</p>
+    </header>
+    <div class="service-body">
+      <div class="service-desc rv">
+        <p>We design and build AI agents that take on real operational work — research, drafting, analysis, internal ops, support edge cases. Not chatbots. Not demos. Production-grade agents engineered for a specific job, with the evaluation harness to <strong>prove they're doing it well</strong>.</p>
+        <p>Every agent is scoped to a job description, owned end-to-end, and shipped with documentation that lets your team take over. We don't build dependency.</p>
+      </div>
+      <aside class="service-aside rv d1">
+        <div class="aside-block">
+          <div class="aside-h">What's included</div>
+          <ul class="aside-list">
+            <li>Job-description scoping &amp; success criteria</li>
+            <li>Agent architecture &amp; system design</li>
+            <li>Build, integration &amp; deployment</li>
+            <li>Evaluation harness &amp; monitoring</li>
+            <li>Documentation &amp; full handoff</li>
+          </ul>
+        </div>
+        <div class="aside-block">
+          <div class="aside-h">Engagement</div>
+          <dl class="aside-meta">
+            <dt>Duration</dt><dd>4–8 weeks</dd>
+            <dt>Pricing</dt><dd>Fixed fee</dd>
+            <dt>Output</dt><dd>Live agent</dd>
+          </dl>
+        </div>
+        <div class="aside-block">
+          <div class="aside-h">Best when</div>
+          <p class="aside-fit">You've identified a repeatable, high-friction task or role that would benefit from being handled by an agent.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- §04 AI AUTOMATIONS -->
+<section class="service alt" id="automation">
+  <div class="service-inner">
+    <header class="service-head rv">
+      <div class="service-num"><b>§ 04</b> &nbsp;·&nbsp; Tactical</div>
+      <h2 class="service-title">AI <em>Automations</em></h2>
+      <p class="service-tagline">Targeted automation that removes operational friction.</p>
+    </header>
+    <div class="service-body">
+      <div class="service-desc rv">
+        <p>Smaller in scope than full agents — focused on the specific bottleneck eating hours every week. We audit the workflow, design the automation, build it on the right stack (Zapier, Make, n8n, custom code, or a blend), and hand it over with monitoring in place.</p>
+        <p>Most of these engagements <strong>pay for themselves inside a quarter</strong>.</p>
+      </div>
+      <aside class="service-aside rv d1">
+        <div class="aside-block">
+          <div class="aside-h">What's included</div>
+          <ul class="aside-list">
+            <li>Workflow audit &amp; ROI scoping</li>
+            <li>Integration build on the right stack</li>
+            <li>Model orchestration where useful</li>
+            <li>Monitoring &amp; error handling</li>
+            <li>Maintenance plan &amp; handoff</li>
+          </ul>
+        </div>
+        <div class="aside-block">
+          <div class="aside-h">Engagement</div>
+          <dl class="aside-meta">
+            <dt>Duration</dt><dd>2–4 weeks</dd>
+            <dt>Pricing</dt><dd>Fixed fee</dd>
+            <dt>Output</dt><dd>Live workflow</dd>
+          </dl>
+        </div>
+        <div class="aside-block">
+          <div class="aside-h">Best when</div>
+          <p class="aside-fit">A high-volume, predictable task is eating real hours — and the workflow is well-defined enough to automate.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- §05 AI CHANGE MANAGEMENT -->
+<section class="service" id="change">
+  <div class="service-inner">
+    <header class="service-head rv">
+      <div class="service-num"><b>§ 05</b> &nbsp;·&nbsp; Adoption</div>
+      <h2 class="service-title">AI Change <em>Management</em></h2>
+      <p class="service-tagline">Adoption that actually sticks.</p>
+    </header>
+    <div class="service-body">
+      <div class="service-desc rv">
+        <p>Most internal AI tools fail at adoption — not at the technology. We help organisations roll out AI tooling internally by combining product, change, and training disciplines so the tools <strong>actually get used</strong>.</p>
+        <p>We design the rollout, identify and equip internal champions, build the training, and define the success metrics — so what you've invested in becomes part of how the work gets done.</p>
+      </div>
+      <aside class="service-aside rv d1">
+        <div class="aside-block">
+          <div class="aside-h">What's included</div>
+          <ul class="aside-list">
+            <li>Adoption-readiness assessment</li>
+            <li>Rollout sequencing &amp; comms plan</li>
+            <li>Training &amp; enablement design</li>
+            <li>Internal champion programme</li>
+            <li>Success metrics &amp; review cadence</li>
+          </ul>
+        </div>
+        <div class="aside-block">
+          <div class="aside-h">Engagement</div>
+          <dl class="aside-meta">
+            <dt>Duration</dt><dd>6–12 weeks</dd>
+            <dt>Pricing</dt><dd>Fixed phases</dd>
+            <dt>Output</dt><dd>Live programme</dd>
+          </dl>
+        </div>
+        <div class="aside-block">
+          <div class="aside-h">Best when</div>
+          <p class="aside-fit">You've built or bought AI tooling and need it to land across the org — not sit on a shelf.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- §06 ONGOING ADVISORY -->
+<section class="service" id="advisory">
+  <div class="service-inner">
+    <header class="service-head rv">
+      <div class="service-num"><b>§ 06</b> &nbsp;·&nbsp; Retainer</div>
+      <h2 class="service-title">Ongoing <em>Advisory</em></h2>
+      <p class="service-tagline">A senior thinking partner on retainer.</p>
+    </header>
+    <div class="service-body">
+      <div class="service-desc rv">
+        <p>For executives making frequent AI-shaped decisions and lacking a senior in-house specialist. We sit alongside you as a thinking partner — diligence on tools and vendors, sanity checks on your team's output, briefings on what just shipped and why it matters, and judgement calls when the path forward isn't obvious.</p>
+        <p>This is not consulting in the deck-producing sense. <strong>It's working access</strong> to a small set of people who've built and shipped this stuff.</p>
+      </div>
+      <aside class="service-aside rv d1">
+        <div class="aside-block">
+          <div class="aside-h">What's included</div>
+          <ul class="aside-list">
+            <li>Bi-weekly working sessions</li>
+            <li>Async access · Slack &amp; email</li>
+            <li>Vendor &amp; tool diligence</li>
+            <li>Industry briefings on what's shifting</li>
+            <li>Hiring &amp; org-design input</li>
+          </ul>
+        </div>
+        <div class="aside-block">
+          <div class="aside-h">Engagement</div>
+          <dl class="aside-meta">
+            <dt>Duration</dt><dd>3–6 months</dd>
+            <dt>Pricing</dt><dd>Monthly retainer</dd>
+            <dt>Output</dt><dd>Continuous</dd>
+          </dl>
+        </div>
+        <div class="aside-block">
+          <div class="aside-h">Best when</div>
+          <p class="aside-fit">You're making AI-shaped calls every week — and don't have, or aren't ready to hire, a senior specialist.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- §07 FRACTIONAL AI OPS -->
+<section class="service alt" id="fractional">
+  <div class="service-inner">
+    <header class="service-head rv">
+      <div class="service-num"><b>§ 07</b> &nbsp;·&nbsp; Embedded</div>
+      <h2 class="service-title">Fractional <em>AI Operations</em></h2>
+      <p class="service-tagline">Senior AI operations leadership — embedded, fractionally.</p>
+    </header>
+    <div class="service-body">
+      <div class="service-desc rv">
+        <p>For organisations that need senior AI operations capability now — but aren't ready, or shouldn't be, hiring full-time. We embed inside your team a few days a week, owning an active backlog of agents, automations, adoption work, and vendor decisions. Effectively part of your leadership.</p>
+        <p>This is the deepest engagement we offer. <strong>Continuity, not a project.</strong> You get senior judgement in the room, the work moving forward, and a steady hand on what AI is doing across the organisation week to week.</p>
+      </div>
+      <aside class="service-aside rv d1">
+        <div class="aside-block">
+          <div class="aside-h">What's included</div>
+          <ul class="aside-list">
+            <li>Embedded leadership · 1–3 days/week</li>
+            <li>Active project portfolio management</li>
+            <li>Vendor &amp; tool diligence + procurement</li>
+            <li>Team coaching &amp; capability building</li>
+            <li>Direct stakeholder &amp; board engagement</li>
+          </ul>
+        </div>
+        <div class="aside-block">
+          <div class="aside-h">Engagement</div>
+          <dl class="aside-meta">
+            <dt>Duration</dt><dd>6–12 months</dd>
+            <dt>Pricing</dt><dd>Monthly retainer</dd>
+            <dt>Output</dt><dd>Continuous ops</dd>
+          </dl>
+        </div>
+        <div class="aside-block">
+          <div class="aside-h">Best when</div>
+          <p class="aside-fit">You need senior AI ops capability now — and you want continuity, not another project.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section class="principles">
+  <div class="principles-inner">
+    <div class="rv">
+      <div class="section-tag"><b>§ Standards</b> &nbsp;·&nbsp; How we engage</div>
+      <h2 class="principles-h">A short list of how we <em>work</em>.</h2>
+    </div>
+    <ol class="principles-list rv d1">
+      <li><span class="pn">01</span><span class="pt">We work with a <em>small number</em> of clients at a time.</span></li>
+      <li><span class="pn">02</span><span class="pt">Every engagement starts with a <em>paid scoping conversation</em> — fitted to your context, not a template.</span></li>
+      <li><span class="pn">03</span><span class="pt">We don't do RFPs or speculative decks.</span></li>
+      <li><span class="pn">04</span><span class="pt">We hand over <em>completely</em>. Your team owns what we build.</span></li>
+      <li><span class="pn">05</span><span class="pt">If we're not the right fit, we'll tell you and refer you on.</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="cta-inner">
+    <h2 class="cta-h rv">Found the engagement<br>that <em>fits<span class="acc">?</span></em></h2>
+    <div class="cta-actions rv d1">
+      <button class="btn" data-modal>Get in touch →</button>
+      <p class="cta-sub">A 30-minute call. No pitch deck. Just questions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-inner">
+    <div class="ft-top">
+      <div>
+        <div class="ft-brand">
+          <svg><use href="#cl-logo"/></svg>
+          <span>Compound&nbsp;Labs</span>
+        </div>
+        <p class="ft-brand-tag">An AI Operations Studio for founders and operators building the next decade of category-defining companies.</p>
+      </div>
+      <div class="ft-col">
+        <div class="ft-col-h">Practice</div>
+        <ul>
+          <li><a href="services.html#strategy">Strategy &amp; Ops</a></li>
+          <li><a href="services.html#product">Product Dev</a></li>
+          <li><a href="services.html#agents">Agent Dev</a></li>
+          <li><a href="services.html#automation">Automations</a></li>
+          <li><a href="services.html#change">Change Mgmt</a></li>
+          <li><a href="services.html#advisory">Advisory</a></li>
+          <li><a href="services.html#fractional">Fractional AI Ops</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <div class="ft-col-h">Studio</div>
+        <ul>
+          <li><a href="index.html#why">Why now</a></li>
+          <li><a href="index.html#method">Method</a></li>
+          <li><button data-modal>Contact</button></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <div class="ft-col-h">Elsewhere</div>
+        <ul>
+          <li><a href="#" rel="noopener">LinkedIn</a></li>
+          <li><a href="mailto:hello@compoundlabs.co">Email</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ft-mark">
+      <span class="word">Compound<em>Labs<span class="stop">.</span></em></span>
+      <span class="yr">MMXXV</span>
+    </div>
+
+    <div class="ft-bottom">
+      <span>© 2025 Compound Labs Ltd.</span>
+      <span class="mid">Set in Instrument Serif &amp; Manrope</span>
+      <span>Remote · v1.0</span>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-h">
+  <div class="modal-card">
+    <button class="modal-close" id="modalClose" aria-label="Close">Close ✕</button>
+    <div id="modalForm">
+      <div class="modal-tag">Begin a conversation</div>
+      <h3 class="modal-h" id="modal-h">Let's <em>talk</em><span class="stop">.</span></h3>
+      <form id="contactForm">
+        <div class="field-row">
+          <div class="field"><label>First name</label><input type="text" name="first" placeholder="First" required></div>
+          <div class="field"><label>Last name</label><input type="text" name="last" placeholder="Last" required></div>
+        </div>
+        <div class="field"><label>Email</label><input type="email" name="email" placeholder="you@company.com" required></div>
+        <div class="field"><label>Business</label><input type="text" name="business" placeholder="Your company" required></div>
+        <div class="field"><label>Engagement of interest</label><input type="text" name="engagement" placeholder="e.g. Product Development"></div>
+        <div class="field"><label>What are you exploring?</label><textarea name="context" placeholder="A line or two about what you're working on..."></textarea></div>
+        <button type="submit" class="modal-submit">Send →</button>
+        <p class="modal-fine">We reply personally · within 2 business days</p>
+      </form>
+    </div>
+    <div class="modal-thanks" id="modalThanks">
+      <h3 class="modal-h">Thank<em>s</em><span class="stop">.</span></h3>
+      <p>We'll be in touch shortly</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const nav=document.getElementById('nav');
+  const progress=document.getElementById('readProgress');
+  const onScroll=()=>{
+    nav.classList.toggle('stuck',scrollY>40);
+    const h=document.documentElement.scrollHeight-window.innerHeight;
+    if(progress) progress.style.width=h?`${(scrollY/h)*100}%`:'0%';
+  };
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // smooth anchor scroll with offset for fixed nav
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    const id=a.getAttribute('href').slice(1);
+    if(!id||id==='main') return;
+    const target=document.getElementById(id);
+    if(!target) return;
+    a.addEventListener('click',e=>{
+      e.preventDefault();
+      const top=target.getBoundingClientRect().top+window.scrollY-90;
+      window.scrollTo({top,behavior:'smooth'});
+    });
+  });
+
+  // mobile menu
+  const navToggle=document.getElementById('navToggle');
+  const mobileMenu=document.getElementById('mobileMenu');
+  navToggle?.addEventListener('click',()=>{
+    const open=!navToggle.classList.contains('open');
+    navToggle.classList.toggle('open',open);
+    mobileMenu.classList.toggle('open',open);
+    navToggle.setAttribute('aria-expanded',open);
+    document.body.style.overflow=open?'hidden':'';
+  });
+  mobileMenu?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    navToggle.classList.remove('open');mobileMenu.classList.remove('open');
+    navToggle.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+  }));
+
+  // reveal
+  const obs=new IntersectionObserver(es=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
+  },{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+  // modal
+  const modal=document.getElementById('modal');
+  const open=()=>{modal.classList.add('open');document.body.style.overflow='hidden'};
+  const close=()=>{modal.classList.remove('open');document.body.style.overflow=''};
+  document.querySelectorAll('[data-modal]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();open()}));
+  document.getElementById('modalClose').addEventListener('click',close);
+  modal.addEventListener('click',e=>{if(e.target===modal)close()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+  document.getElementById('contactForm').addEventListener('submit',e=>{
+    e.preventDefault();
+    document.getElementById('modalForm').style.display='none';
+    document.getElementById('modalThanks').style.display='block';
+  });
+</script>
+</body>
+</html>

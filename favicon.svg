@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220">
+  <defs>
+    <clipPath id="cl-top"><circle cx="110" cy="80" r="48"/></clipPath>
+    <clipPath id="cl-left"><circle cx="80" cy="132" r="48"/></clipPath>
+  </defs>
+  <rect width="220" height="220" fill="#F4F0E6"/>
+  <g clip-path="url(#cl-top)">
+    <g clip-path="url(#cl-left)">
+      <circle cx="140" cy="132" r="48" fill="#0D0D0D"/>
+    </g>
+  </g>
+  <g fill="none" stroke="#0D0D0D" stroke-width="2.4">
+    <circle cx="110" cy="80" r="48"/>
+    <circle cx="80" cy="132" r="48"/>
+    <circle cx="140" cy="132" r="48"/>
+  </g>
+  <circle cx="110" cy="113" r="6" fill="#C8532B"/>
+</svg>

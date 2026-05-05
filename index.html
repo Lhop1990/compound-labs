@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Compound Labs — An AI Operations Studio</title>
+<meta name="description" content="An AI Operations Studio. Helping founders and operators turn their businesses into AI-frontier companies — strategy, product, agents, automation, change management, advisory, and fractional AI ops.">
+<meta name="theme-color" content="#F4F0E6">
+<meta property="og:title" content="Compound Labs — An AI Operations Studio">
+<meta property="og:description" content="Helping founders and operators turn their businesses into AI-frontier companies.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Compound Labs">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Compound Labs — An AI Operations Studio">
+<meta name="twitter:description" content="Helping founders and operators turn their businesses into AI-frontier companies.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* ── HERO ───────────────────────────────────────────── */
+  .hero{
+    min-height:100vh;
+    padding:128px var(--pad) 0;
+    display:flex;flex-direction:column;
+    position:relative;
+    z-index:2;
+  }
+  .hero-meta{
+    display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;
+    padding-bottom:14px;border-bottom:1px solid var(--rule-strong);
+    font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);
+  }
+  .hero-meta > div:nth-child(2){text-align:center}
+  .hero-meta > div:nth-child(3){text-align:right}
+  .hero-meta b{font-weight:400;color:var(--ink)}
+
+  .hero-stage{
+    flex:1;display:flex;flex-direction:column;justify-content:center;
+    padding:48px 0 32px;position:relative;
+  }
+  .hero-title{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(4rem,14vw,14rem);
+    line-height:.86;letter-spacing:-.04em;
+    text-align:left;color:var(--ink);
+  }
+  .hero-title .row1{display:block}
+  .hero-title .row2{display:block;font-style:italic;letter-spacing:-.025em;text-indent:.06em;margin-top:-.02em}
+  .hero-title .stop{color:var(--vermillion);font-style:normal;letter-spacing:0}
+  .hero-title sup{
+    font-family:var(--mono);font-size:.06em;font-weight:400;letter-spacing:.18em;
+    vertical-align:super;color:var(--ink-soft);margin-left:.18em;text-transform:uppercase;
+  }
+
+  .hero-foot{
+    display:grid;grid-template-columns:auto minmax(0,1fr) auto;
+    align-items:end;gap:56px;
+    padding:28px 0 36px;
+    border-top:1px solid var(--rule-strong);
+  }
+  .hero-eyebrow{
+    display:flex;align-items:center;gap:12px;
+    font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-soft);max-width:18ch;line-height:1.6;
+  }
+  .hero-eyebrow .tag-line{width:24px;height:1px;background:var(--ink);flex-shrink:0}
+  .hero-lead{
+    font-family:var(--serif);
+    font-size:clamp(1.55rem,2.4vw,2.3rem);
+    line-height:1.18;letter-spacing:-.012em;
+    max-width:32ch;color:var(--ink);
+  }
+  .hero-lead em{font-style:italic}
+  .hero-actions{display:flex;flex-direction:column;align-items:flex-end;gap:14px;flex-shrink:0}
+
+  .scroll-tag{
+    position:absolute;left:var(--pad);bottom:14px;
+    font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);
+    display:flex;align-items:center;gap:10px;
+  }
+  .scroll-tag .arrow{
+    display:inline-block;width:1px;height:22px;background:var(--ink-faint);
+    animation:fall 2s ease-in-out infinite;
+  }
+  @keyframes fall{0%{transform:scaleY(.2);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(.2);transform-origin:bottom}}
+
+  /* ── PREMISE ────────────────────────────────────────── */
+  .premise{padding:128px var(--pad);border-top:1px solid var(--rule);position:relative;z-index:2}
+  .premise-grid{
+    display:grid;grid-template-columns:1.05fr 1.15fr;gap:80px;
+    align-items:start;max-width:var(--max);margin:0 auto;
+  }
+  .premise-h{font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,5.4vw,5.6rem);line-height:.95;letter-spacing:-.022em;color:var(--ink)}
+  .premise-h em{font-style:italic}
+  .premise-body{padding-top:14px;border-top:1px solid var(--rule);margin-top:8px}
+  .premise-body p{font-size:17px;line-height:1.7;color:var(--ink-soft);margin:24px 0 0;max-width:48ch}
+  .premise-body p:first-of-type::first-letter{
+    font-family:var(--serif);font-size:4.4em;float:left;line-height:.85;
+    margin:.05em .12em -.02em 0;color:var(--ink);font-weight:400;
+  }
+  .premise-body strong{color:var(--ink);font-weight:500;font-style:italic;font-family:var(--serif);font-size:1.05em}
+
+  .stats{
+    display:grid;grid-template-columns:1fr 1fr;gap:0;
+    margin-top:64px;border-top:1px solid var(--rule-strong);
+  }
+  .stat{padding:32px 0 0;position:relative}
+  .stat:nth-child(2){padding-left:36px;border-left:1px solid var(--rule)}
+  .stat-fig{font-family:var(--serif);font-size:clamp(3rem,6vw,5rem);line-height:1;letter-spacing:-.02em}
+  .stat-fig em{font-style:italic;color:var(--vermillion)}
+  .stat-cap{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin-top:14px;line-height:1.6;max-width:24ch}
+
+  /* ── PULL QUOTE ─────────────────────────────────────── */
+  .quote{padding:140px var(--pad);border-top:1px solid var(--rule);position:relative;z-index:2;background:var(--paper-deep)}
+  .quote-inner{max-width:1100px;margin:0 auto}
+  .quote-mark{font-family:var(--serif);font-size:8rem;line-height:.4;color:var(--vermillion);font-style:italic;display:block;margin-bottom:24px}
+  .quote-text{
+    font-family:var(--serif);font-size:clamp(1.8rem,3.4vw,3rem);line-height:1.18;letter-spacing:-.012em;
+    color:var(--ink);max-width:24ch;
+  }
+  .quote-text em{font-style:italic;color:var(--ink)}
+  .quote-attr{
+    margin-top:48px;display:flex;align-items:center;gap:14px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);
+  }
+  .quote-attr::before{content:'';width:36px;height:1px;background:var(--ink)}
+
+  /* ── SERVICES TOC (homepage strip) ──────────────────── */
+  .svc{padding:128px var(--pad);border-top:1px solid var(--rule);position:relative;z-index:2}
+  .svc-inner{max-width:var(--max);margin:0 auto}
+  .svc-head{
+    display:flex;justify-content:space-between;align-items:baseline;
+    margin-bottom:64px;gap:24px;
+  }
+  .svc-h{font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,5.4vw,5.6rem);line-height:.95;letter-spacing:-.022em;color:var(--ink)}
+  .svc-h em{font-style:italic}
+
+  .svc-list{border-top:1px solid var(--rule-strong)}
+  .svc-row{
+    display:grid;grid-template-columns:64px minmax(0,1fr) minmax(0,1.4fr) 80px;
+    gap:32px;align-items:center;
+    padding:30px 0;border-bottom:1px solid var(--rule);
+    transition:padding .35s cubic-bezier(.16,1,.3,1),background .25s;
+    position:relative;cursor:pointer;
+  }
+  .svc-row:hover{padding-left:18px;padding-right:18px;background:var(--paper-deep)}
+  .svc-num{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--ink-soft)}
+  .svc-name{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(1.5rem,2.6vw,2.2rem);line-height:1;letter-spacing:-.012em;
+    display:flex;align-items:center;gap:18px;color:var(--ink);
+  }
+  .svc-name .dot-leader{
+    flex:1;border-bottom:1px dotted var(--rule-strong);
+    height:0;align-self:end;margin-bottom:.5em;
+    opacity:.6;transition:opacity .25s;
+  }
+  .svc-row:hover .svc-name .dot-leader{opacity:1}
+  .svc-name em{font-style:italic}
+  .svc-desc{font-size:14px;line-height:1.65;color:var(--ink-soft);max-width:48ch}
+  .svc-arrow{
+    font-family:var(--mono);font-size:11px;letter-spacing:.18em;
+    color:var(--ink-soft);text-align:right;text-transform:uppercase;
+    transition:color .2s,transform .25s;display:flex;justify-content:flex-end;align-items:center;gap:8px;
+  }
+  .svc-arrow .arr{display:inline-block;transition:transform .3s}
+  .svc-row:hover .svc-arrow{color:var(--vermillion)}
+  .svc-row:hover .svc-arrow .arr{transform:translateX(6px)}
+
+  /* ── METHOD ─────────────────────────────────────────── */
+  .proc{padding:128px var(--pad);border-top:1px solid var(--rule);position:relative;z-index:2;background:var(--paper-deep)}
+  .proc-inner{max-width:var(--max);margin:0 auto}
+  .proc-h{font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,5.4vw,5.6rem);line-height:.95;letter-spacing:-.022em;color:var(--ink);margin-bottom:72px;max-width:18ch}
+  .proc-h em{font-style:italic}
+  .proc-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    border-top:1px solid var(--rule-strong);
+  }
+  .proc-step{
+    padding:36px 28px 36px 0;border-right:1px solid var(--rule);
+    position:relative;
+  }
+  .proc-step:last-child{border-right:none;padding-right:0}
+  .proc-step:not(:first-child){padding-left:36px}
+  .proc-meta{
+    display:flex;align-items:center;justify-content:space-between;
+    margin-bottom:48px;
+    font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);
+  }
+  .proc-meta .num{color:var(--ink)}
+  .proc-name{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(1.6rem,2.6vw,2.2rem);letter-spacing:-.012em;line-height:1.05;margin-bottom:16px;color:var(--ink);
+  }
+  .proc-name em{font-style:italic}
+  .proc-desc{font-size:15px;line-height:1.65;color:var(--ink-soft);max-width:34ch}
+
+  /* ── HERO LOAD ANIMATION ────────────────────────────── */
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  .hero-meta,.hero-title,.hero-foot,.scroll-tag{opacity:0;animation:rise 1s cubic-bezier(.16,1,.3,1) forwards}
+  .hero-meta{animation-delay:.05s}
+  .hero-title{animation-delay:.2s}
+  .hero-foot{animation-delay:.45s}
+  .scroll-tag{animation-delay:.65s}
+
+  /* ── PAGE-SPECIFIC RESPONSIVE ───────────────────────── */
+  @media (max-width:1100px){
+    .premise-grid{grid-template-columns:1fr;gap:48px}
+    .svc-row{grid-template-columns:48px minmax(0,1fr) minmax(0,1.4fr) 80px;gap:24px}
+    .hero-foot{grid-template-columns:1fr;gap:32px;align-items:start}
+    .hero-actions{flex-direction:row;align-items:center;justify-self:start}
+    .proc-grid{grid-template-columns:1fr}
+    .proc-step{border-right:none;border-bottom:1px solid var(--rule);padding:32px 0!important}
+    .proc-step:last-child{border-bottom:none}
+  }
+  @media (max-width:760px){
+    .hero{padding:120px var(--pad) 0;min-height:92vh}
+    .hero-meta{grid-template-columns:1fr 1fr}
+    .hero-meta > div:nth-child(3){display:none}
+    .hero-title{font-size:clamp(3.6rem,18vw,7.5rem)}
+    .hero-stage{padding:32px 0 32px}
+    .hero-foot{padding:20px 0 28px;gap:24px}
+    .scroll-tag{display:none}
+    .premise,.svc,.proc,.quote{padding:80px var(--pad)}
+    .stats{grid-template-columns:1fr;gap:0}
+    .stat:nth-child(2){border-left:none;border-top:1px solid var(--rule);padding-left:0;margin-top:28px;padding-top:28px}
+    .quote-mark{font-size:5rem}
+    .svc-row{grid-template-columns:36px 1fr;gap:14px;padding:24px 0}
+    .svc-row .svc-desc,.svc-row .svc-arrow{display:none}
+    .svc-row:hover{padding-left:0;padding-right:0;background:transparent}
+    .svc-name{font-size:1.4rem}
+    .svc-name .dot-leader{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- shared logo -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="cl-logo" viewBox="0 0 220 220">
+      <defs>
+        <clipPath id="cl-top"><circle cx="110" cy="80" r="48"/></clipPath>
+        <clipPath id="cl-left"><circle cx="80" cy="132" r="48"/></clipPath>
+      </defs>
+      <g clip-path="url(#cl-top)"><g clip-path="url(#cl-left)"><circle cx="140" cy="132" r="48" fill="currentColor"/></g></g>
+      <g fill="none" stroke="currentColor" stroke-width="1.4">
+        <circle cx="110" cy="80" r="48"/>
+        <circle cx="80" cy="132" r="48"/>
+        <circle cx="140" cy="132" r="48"/>
+      </g>
+      <circle cx="110" cy="113" r="4" fill="#C8532B"/>
+    </symbol>
+  </defs>
+</svg>
+
+<a href="#main" class="skip-link">Skip to content</a>
+<div class="read-progress" id="readProgress"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="logo">
+    <svg><use href="#cl-logo"/></svg>
+    <span>Compound&nbsp;Labs</span>
+  </a>
+  <div class="nav-links">
+    <a href="#why">Why</a>
+    <a href="services.html">Practice</a>
+    <a href="#method">Method</a>
+    <a href="#contact" data-modal>Contact</a>
+  </div>
+  <div class="nav-cta-wrap">
+    <button class="nav-cta" data-modal>Let's chat →</button>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="index.html">Home <span class="num">→</span></a></li>
+    <li><a href="#why">Why <span class="num">§ 01</span></a></li>
+    <li><a href="services.html">Practice <span class="num">§ 02</span></a></li>
+    <li><a href="#method">Method <span class="num">§ 03</span></a></li>
+    <li><button data-modal>Contact <span class="num">→</span></button></li>
+  </ul>
+  <div class="mobile-menu-foot">
+    <span>Compound Labs · 2025</span>
+    <span>Remote</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="main">
+  <div class="hero-meta">
+    <div><b>Issue 01</b> &nbsp;/&nbsp; The Operations Studio</div>
+    <div>An AI Operations Studio</div>
+    <div>Established <b>2024</b> &nbsp;/&nbsp; Remote</div>
+  </div>
+
+  <div class="hero-stage">
+    <h1 class="hero-title">
+      <span class="row1">Compound</span>
+      <span class="row2">Labs<span class="stop">.</span><sup>01</sup></span>
+    </h1>
+  </div>
+
+  <div class="hero-foot">
+    <div class="hero-eyebrow"><span class="tag-line"></span>An AI<br>Operations Studio</div>
+    <p class="hero-lead">Helping founders and operators turn their businesses into <em>AI-frontier companies</em>.</p>
+    <div class="hero-actions">
+      <button class="btn" data-modal>Get in touch</button>
+      <a href="services.html" class="btn-text">View practice →</a>
+    </div>
+  </div>
+
+  <div class="scroll-tag">
+    <span>Scroll to read</span>
+    <span class="arrow"></span>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="lbl">Index</span><span class="dot"></span>
+    <span class="tag">§01</span><span class="lbl">Strategy &amp; Operations</span><span class="dot"></span>
+    <span class="tag">§02</span><span class="lbl">Product Development</span><span class="dot"></span>
+    <span class="tag">§03</span><span class="lbl">Agent Development</span><span class="dot"></span>
+    <span class="tag">§04</span><span class="lbl">AI Automations</span><span class="dot"></span>
+    <span class="tag">§05</span><span class="lbl">AI Change Management</span><span class="dot"></span>
+    <span class="tag">§06</span><span class="lbl">Ongoing Advisory</span><span class="dot"></span>
+    <span class="tag">§07</span><span class="lbl">Fractional AI Ops</span><span class="dot"></span>
+    <!-- duplicate for seamless loop -->
+    <span class="lbl">Index</span><span class="dot"></span>
+    <span class="tag">§01</span><span class="lbl">Strategy &amp; Operations</span><span class="dot"></span>
+    <span class="tag">§02</span><span class="lbl">Product Development</span><span class="dot"></span>
+    <span class="tag">§03</span><span class="lbl">Agent Development</span><span class="dot"></span>
+    <span class="tag">§04</span><span class="lbl">AI Automations</span><span class="dot"></span>
+    <span class="tag">§05</span><span class="lbl">AI Change Management</span><span class="dot"></span>
+    <span class="tag">§06</span><span class="lbl">Ongoing Advisory</span><span class="dot"></span>
+    <span class="tag">§07</span><span class="lbl">Fractional AI Ops</span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- PREMISE -->
+<section class="premise" id="why">
+  <div class="premise-grid">
+    <div class="rv">
+      <div class="section-tag"><b>§ 01</b> &nbsp;·&nbsp; The Premise</div>
+      <h2 class="premise-h">AI is moving faster<br>than any business<br>can keep <em>up with</em>.</h2>
+    </div>
+    <div class="rv d1">
+      <div class="premise-body">
+        <p>Most businesses know AI matters. Very few know how to implement it in a way that creates genuine, lasting change. The gap between awareness and execution is widening every month.</p>
+        <p>Compound Labs brings together deep AI capability and the operational experience of building and scaling companies from zero — so our recommendations aren't just technically sound, <strong>they're built around how organisations actually work, grow, and succeed</strong>.</p>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-fig">85<em>%</em></div>
+          <div class="stat-cap">of AI projects fail to reach production — most never needed to</div>
+        </div>
+        <div class="stat">
+          <div class="stat-fig">10<em>×</em></div>
+          <div class="stat-cap">the pace of AI advancement vs. enterprise adoption today</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PULL QUOTE -->
+<section class="quote">
+  <div class="quote-inner">
+    <span class="quote-mark rv">"</span>
+    <p class="quote-text rv d1">The teams that win this decade<br>won't be the ones using AI<br>— they'll be the ones <em>built around it</em>.</p>
+    <div class="quote-attr rv d2">Compound Labs · Operating thesis · 2025</div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="svc" id="practice">
+  <div class="svc-inner">
+    <div class="svc-head">
+      <div>
+        <div class="section-tag rv"><b>§ 02</b> &nbsp;·&nbsp; The Practice</div>
+        <h2 class="svc-h rv">What we <em>do</em>.</h2>
+      </div>
+      <a href="services.html" class="btn-text rv d1">All six engagements →</a>
+    </div>
+    <div class="svc-list">
+      <a href="services.html#strategy" class="svc-row rv">
+        <div class="svc-num">§ 01</div>
+        <div class="svc-name">Strategy &amp; <em>Operations</em><span class="dot-leader"></span></div>
+        <div class="svc-desc">AI inside the way the business runs — opportunity mapping, prioritisation, operating-model design.</div>
+        <div class="svc-arrow"><span>Read</span><span class="arr">→</span></div>
+      </a>
+      <a href="services.html#product" class="svc-row rv">
+        <div class="svc-num">§ 02</div>
+        <div class="svc-name">Product <em>Development</em><span class="dot-leader"></span></div>
+        <div class="svc-desc">AI-native products, end-to-end. Concept, architecture, MVP build, and shipped to production.</div>
+        <div class="svc-arrow"><span>Read</span><span class="arr">→</span></div>
+      </a>
+      <a href="services.html#agents" class="svc-row rv">
+        <div class="svc-num">§ 03</div>
+        <div class="svc-name">Agent <em>Development</em><span class="dot-leader"></span></div>
+        <div class="svc-desc">Working AI agents — scoped, built, and handed over with the eval harness to prove they work.</div>
+        <div class="svc-arrow"><span>Read</span><span class="arr">→</span></div>
+      </a>
+      <a href="services.html#automation" class="svc-row rv">
+        <div class="svc-num">§ 04</div>
+        <div class="svc-name">AI <em>Automations</em><span class="dot-leader"></span></div>
+        <div class="svc-desc">Targeted automation that removes friction. Most engagements pay for themselves inside a quarter.</div>
+        <div class="svc-arrow"><span>Read</span><span class="arr">→</span></div>
+      </a>
+      <a href="services.html#change" class="svc-row rv">
+        <div class="svc-num">§ 05</div>
+        <div class="svc-name">AI Change <em>Management</em><span class="dot-leader"></span></div>
+        <div class="svc-desc">Adoption that sticks. Roll-out, training, champions, and metrics so the tools actually get used.</div>
+        <div class="svc-arrow"><span>Read</span><span class="arr">→</span></div>
+      </a>
+      <a href="services.html#advisory" class="svc-row rv">
+        <div class="svc-num">§ 06</div>
+        <div class="svc-name">Ongoing <em>Advisory</em><span class="dot-leader"></span></div>
+        <div class="svc-desc">A senior thinking partner on retainer for executives navigating AI as the landscape shifts.</div>
+        <div class="svc-arrow"><span>Read</span><span class="arr">→</span></div>
+      </a>
+      <a href="services.html#fractional" class="svc-row rv">
+        <div class="svc-num">§ 07</div>
+        <div class="svc-name">Fractional <em>AI Operations</em><span class="dot-leader"></span></div>
+        <div class="svc-desc">Senior AI operations leadership embedded inside your team. Continuity, not a project.</div>
+        <div class="svc-arrow"><span>Read</span><span class="arr">→</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section class="proc" id="method">
+  <div class="proc-inner">
+    <div class="section-tag rv"><b>§ 03</b> &nbsp;·&nbsp; The Method</div>
+    <h2 class="proc-h rv">We start by<br><em>understanding</em> you.</h2>
+    <div class="proc-grid">
+      <div class="proc-step rv">
+        <div class="proc-meta"><span class="num">Step 01</span><span>Audit</span></div>
+        <h3 class="proc-name">Business <em>audit</em></h3>
+        <p class="proc-desc">We map your workflows, data, and team before recommending a thing. No templates.</p>
+      </div>
+      <div class="proc-step rv d1">
+        <div class="proc-meta"><span class="num">Step 02</span><span>Capture</span></div>
+        <h3 class="proc-name">Requirements <em>capture</em></h3>
+        <p class="proc-desc">We define success in your operational terms — measurable in revenue, time saved, or risk reduced.</p>
+      </div>
+      <div class="proc-step rv d2">
+        <div class="proc-meta"><span class="num">Step 03</span><span>Strategy</span></div>
+        <h3 class="proc-name">Tailored <em>strategy</em></h3>
+        <p class="proc-desc">Then and only then do we build a plan. Specific to you, every time. Built to be executed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="cta-inner">
+    <h2 class="cta-h rv">Curious what AI<br>can do <em>for you<span class="acc">?</span></em></h2>
+    <div class="cta-actions rv d1">
+      <button class="btn" data-modal>Get in touch →</button>
+      <p class="cta-sub">A 30-minute call. No pitch deck. Just questions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-inner">
+    <div class="ft-top">
+      <div>
+        <div class="ft-brand">
+          <svg><use href="#cl-logo"/></svg>
+          <span>Compound&nbsp;Labs</span>
+        </div>
+        <p class="ft-brand-tag">An AI Operations Studio for founders and operators building the next decade of category-defining companies.</p>
+      </div>
+      <div class="ft-col">
+        <div class="ft-col-h">Practice</div>
+        <ul>
+          <li><a href="services.html#strategy">Strategy &amp; Ops</a></li>
+          <li><a href="services.html#product">Product Dev</a></li>
+          <li><a href="services.html#agents">Agent Dev</a></li>
+          <li><a href="services.html#automation">Automations</a></li>
+          <li><a href="services.html#change">Change Mgmt</a></li>
+          <li><a href="services.html#advisory">Advisory</a></li>
+          <li><a href="services.html#fractional">Fractional AI Ops</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <div class="ft-col-h">Studio</div>
+        <ul>
+          <li><a href="#why">Why now</a></li>
+          <li><a href="#method">Method</a></li>
+          <li><button data-modal>Contact</button></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <div class="ft-col-h">Elsewhere</div>
+        <ul>
+          <li><a href="#" rel="noopener">LinkedIn</a></li>
+          <li><a href="mailto:hello@compoundlabs.co">Email</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ft-mark">
+      <span class="word">Compound<em>Labs<span class="stop">.</span></em></span>
+      <span class="yr">MMXXV</span>
+    </div>
+
+    <div class="ft-bottom">
+      <span>© 2025 Compound Labs Ltd.</span>
+      <span class="mid">Set in Instrument Serif &amp; Manrope</span>
+      <span>Remote · v1.0</span>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-h">
+  <div class="modal-card">
+    <button class="modal-close" id="modalClose" aria-label="Close">Close ✕</button>
+    <div id="modalForm">
+      <div class="modal-tag">Begin a conversation</div>
+      <h3 class="modal-h" id="modal-h">Let's <em>talk</em><span class="stop">.</span></h3>
+      <form id="contactForm">
+        <div class="field-row">
+          <div class="field"><label>First name</label><input type="text" name="first" placeholder="First" required></div>
+          <div class="field"><label>Last name</label><input type="text" name="last" placeholder="Last" required></div>
+        </div>
+        <div class="field"><label>Email</label><input type="email" name="email" placeholder="you@company.com" required></div>
+        <div class="field"><label>Business</label><input type="text" name="business" placeholder="Your company" required></div>
+        <div class="field"><label>Engagement of interest</label><input type="text" name="engagement" placeholder="e.g. Product Development"></div>
+        <div class="field"><label>What are you exploring?</label><textarea name="context" placeholder="A line or two about what you're working on..."></textarea></div>
+        <button type="submit" class="modal-submit">Send →</button>
+        <p class="modal-fine">We reply personally · within 2 business days</p>
+      </form>
+    </div>
+    <div class="modal-thanks" id="modalThanks">
+      <h3 class="modal-h">Thank<em>s</em><span class="stop">.</span></h3>
+      <p>We'll be in touch shortly</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const nav=document.getElementById('nav');
+  const progress=document.getElementById('readProgress');
+  const onScroll=()=>{
+    nav.classList.toggle('stuck',scrollY>40);
+    const h=document.documentElement.scrollHeight-window.innerHeight;
+    if(progress) progress.style.width=h?`${(scrollY/h)*100}%`:'0%';
+  };
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // smooth anchor scroll with offset for fixed nav
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    const id=a.getAttribute('href').slice(1);
+    if(!id||id==='main') return;
+    const target=document.getElementById(id);
+    if(!target) return;
+    a.addEventListener('click',e=>{
+      e.preventDefault();
+      const top=target.getBoundingClientRect().top+window.scrollY-90;
+      window.scrollTo({top,behavior:'smooth'});
+    });
+  });
+
+  // mobile menu
+  const navToggle=document.getElementById('navToggle');
+  const mobileMenu=document.getElementById('mobileMenu');
+  navToggle?.addEventListener('click',()=>{
+    const open=!navToggle.classList.contains('open');
+    navToggle.classList.toggle('open',open);
+    mobileMenu.classList.toggle('open',open);
+    navToggle.setAttribute('aria-expanded',open);
+    document.body.style.overflow=open?'hidden':'';
+  });
+  mobileMenu?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    navToggle.classList.remove('open');mobileMenu.classList.remove('open');
+    navToggle.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+  }));
+
+  // reveal
+  const obs=new IntersectionObserver(es=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
+  },{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+  // modal
+  const modal=document.getElementById('modal');
+  const open=()=>{modal.classList.add('open');document.body.style.overflow='hidden'};
+  const close=()=>{modal.classList.remove('open');document.body.style.overflow=''};
+  document.querySelectorAll('[data-modal]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();open()}));
+  document.getElementById('modalClose').addEventListener('click',close);
+  modal.addEventListener('click',e=>{if(e.target===modal)close()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+  document.getElementById('contactForm').addEventListener('submit',e=>{
+    e.preventDefault();
+    document.getElementById('modalForm').style.display='none';
+    document.getElementById('modalThanks').style.display='block';
+  });
+</script>
+</body>
+</html>
