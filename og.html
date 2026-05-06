@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Compound Labs · OG image</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:1200px;height:630px}
+  body{
+    background:#F4F0E6;
+    color:#0D0D0D;
+    font-family:'Instrument Serif','Iowan Old Style',Georgia,serif;
+    overflow:hidden;
+    position:relative;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    text-rendering:optimizeLegibility;
+  }
+  /* paper grain */
+  body::before{
+    content:'';position:absolute;inset:0;pointer-events:none;
+    opacity:.45;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='280' height='280'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .12 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+  .frame{position:absolute;inset:56px 64px;overflow:hidden}
+  /* explicit positioning — guarantees fit in 630px */
+  .top{
+    position:absolute;top:0;left:0;right:0;
+    display:flex;align-items:center;justify-content:space-between;
+    padding-bottom:22px;border-bottom:1px solid rgba(13,13,13,.28);
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono',ui-monospace,monospace;font-size:14px;font-weight:400;
+    letter-spacing:.22em;text-transform:uppercase;color:#4F4D48;
+    display:flex;align-items:center;gap:14px;
+  }
+  .eyebrow::before{content:'';width:32px;height:1px;background:#0D0D0D}
+  .logo{width:54px;height:54px;color:#0D0D0D}
+  .mid{
+    position:absolute;top:50%;left:0;right:0;transform:translateY(-50%);
+  }
+  .wordmark{
+    font-size:140px;line-height:.86;letter-spacing:-.04em;font-weight:400;
+  }
+  .wordmark .row1{display:block}
+  .wordmark .row2{display:block;font-style:italic;letter-spacing:-.025em;text-indent:.06em;margin-top:-.02em}
+  .wordmark .stop{color:#C8532B;font-style:normal;letter-spacing:0}
+  .bot{
+    position:absolute;bottom:0;left:0;right:0;height:54px;
+    display:flex;align-items:center;justify-content:flex-end;
+    border-top:1px solid rgba(13,13,13,.28);
+  }
+  .url{
+    font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;font-weight:400;
+    letter-spacing:.22em;text-transform:uppercase;color:#4F4D48;
+  }
+</style>
+</head>
+<body>
+  <div class="frame">
+    <div class="top">
+      <div class="eyebrow">An AI Strategy &amp; Operations Studio</div>
+      <svg class="logo" viewBox="0 0 220 220" aria-hidden="true">
+        <defs>
+          <clipPath id="og-cl-top"><circle cx="110" cy="80" r="48"/></clipPath>
+          <clipPath id="og-cl-left"><circle cx="80" cy="132" r="48"/></clipPath>
+        </defs>
+        <g clip-path="url(#og-cl-top)"><g clip-path="url(#og-cl-left)"><circle cx="140" cy="132" r="48" fill="currentColor"/></g></g>
+        <g fill="none" stroke="currentColor" stroke-width="1.4">
+          <circle cx="110" cy="80" r="48"/>
+          <circle cx="80" cy="132" r="48"/>
+          <circle cx="140" cy="132" r="48"/>
+        </g>
+        <circle cx="110" cy="113" r="4" fill="#C8532B"/>
+      </svg>
+    </div>
+
+    <div class="mid">
+      <h1 class="wordmark">
+        <span class="row1">Compound</span>
+        <span class="row2">Labs<span class="stop">.</span></span>
+      </h1>
+    </div>
+
+    <div class="bot">
+      <div class="url">compoundlabs.studio</div>
+    </div>
+  </div>
+</body>
+</html>
