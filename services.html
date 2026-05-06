@@ -13,11 +13,44 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Practice — Compound Labs">
 <meta name="twitter:description" content="Seven engagements across the AI lifecycle.">
+<link rel="canonical" href="https://compoundlabs.studio/services.html">
+<meta property="og:url" content="https://compoundlabs.studio/services.html">
+<meta property="og:image" content="https://compoundlabs.studio/og-image.png">
+<meta name="twitter:image" content="https://compoundlabs.studio/og-image.png">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script defer data-domain="compoundlabs.studio" src="https://plausible.io/js/script.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://compoundlabs.studio/" },
+        { "@type": "ListItem", "position": 2, "name": "Practice", "item": "https://compoundlabs.studio/services.html" }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "name": "Engagements",
+      "description": "Seven ways to work with Compound Labs.",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Strategy & Operations", "url": "https://compoundlabs.studio/services.html#strategy" },
+        { "@type": "ListItem", "position": 2, "name": "Product Development", "url": "https://compoundlabs.studio/services.html#product" },
+        { "@type": "ListItem", "position": 3, "name": "Agent Development", "url": "https://compoundlabs.studio/services.html#agents" },
+        { "@type": "ListItem", "position": 4, "name": "AI Automations", "url": "https://compoundlabs.studio/services.html#automation" },
+        { "@type": "ListItem", "position": 5, "name": "AI Change Management", "url": "https://compoundlabs.studio/services.html#change" },
+        { "@type": "ListItem", "position": 6, "name": "Ongoing Advisory", "url": "https://compoundlabs.studio/services.html#advisory" },
+        { "@type": "ListItem", "position": 7, "name": "Fractional AI Operations", "url": "https://compoundlabs.studio/services.html#fractional" }
+      ]
+    }
+  ]
+}
+</script>
 <style>
   /* ── PAGE HERO ──────────────────────────────────────── */
   .page-hero{
@@ -243,7 +276,7 @@
   </a>
   <div class="nav-links">
     <a href="index.html#why">Why</a>
-    <a href="services.html" class="active">Practice</a>
+    <a href="services.html" class="active" aria-current="page">Practice</a>
     <a href="index.html#method">Method</a>
     <a href="index.html#studio">About Us</a>
     <a href="#contact" data-modal>Contact</a>
@@ -774,14 +807,35 @@
   },{threshold:.08,rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 
-  // modal
-  const modal=document.getElementById('modal');
-  const open=()=>{modal.classList.add('open');document.body.style.overflow='hidden'};
-  const close=()=>{modal.classList.remove('open');document.body.style.overflow=''};
-  document.querySelectorAll('[data-modal]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();open()}));
-  document.getElementById('modalClose').addEventListener('click',close);
-  modal.addEventListener('click',e=>{if(e.target===modal)close()});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+  // modal — with focus trap + return focus + ESC
+  const modal = document.getElementById('modal');
+  let lastTrigger = null;
+  const focusableSel = 'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  const open = (trigger) => {
+    lastTrigger = trigger || document.activeElement;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    const first = modal.querySelector(focusableSel);
+    if (first) setTimeout(() => first.focus(), 60);
+  };
+  const close = () => {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    if (lastTrigger && typeof lastTrigger.focus === 'function') lastTrigger.focus();
+  };
+  document.querySelectorAll('[data-modal]').forEach(el => el.addEventListener('click', e => { e.preventDefault(); open(el); }));
+  document.getElementById('modalClose').addEventListener('click', close);
+  modal.addEventListener('click', e => { if (e.target === modal) close(); });
+  document.addEventListener('keydown', e => {
+    if (!modal.classList.contains('open')) return;
+    if (e.key === 'Escape') { close(); return; }
+    if (e.key !== 'Tab') return;
+    const f = Array.from(modal.querySelectorAll(focusableSel)).filter(el => !el.hasAttribute('disabled'));
+    if (!f.length) return;
+    const first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
   // contact form → Formsubmit.co (delivers POST as email; no backend required)
   // Swap to hello@compoundlabs.studio once the alias is configured in Google Workspace.
   const FORM_ENDPOINT = 'https://formsubmit.co/ajax/lucien@compoundlabs.studio';

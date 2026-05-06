@@ -13,11 +13,72 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Compound Labs — An AI Strategy &amp; Operations Studio">
 <meta name="twitter:description" content="AI strategy, products, agents, and ongoing operations for businesses ready to ship.">
+<link rel="canonical" href="https://compoundlabs.studio/">
+<meta property="og:url" content="https://compoundlabs.studio/">
+<meta property="og:image" content="https://compoundlabs.studio/og-image.png">
+<meta name="twitter:image" content="https://compoundlabs.studio/og-image.png">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script defer data-domain="compoundlabs.studio" src="https://plausible.io/js/script.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://compoundlabs.studio/#organization",
+      "name": "Compound Labs",
+      "legalName": "Compound Labs Ltd",
+      "url": "https://compoundlabs.studio/",
+      "logo": "https://compoundlabs.studio/favicon.svg",
+      "description": "An AI Strategy & Operations Studio. We design and run AI inside companies — strategy, products, agents, operations.",
+      "founder": { "@id": "https://compoundlabs.studio/#lucien" },
+      "sameAs": ["https://www.linkedin.com/in/lucienhopkinson/"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://compoundlabs.studio/#website",
+      "url": "https://compoundlabs.studio/",
+      "name": "Compound Labs",
+      "publisher": { "@id": "https://compoundlabs.studio/#organization" },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://compoundlabs.studio/#lucien",
+      "name": "Lucien Hopkinson",
+      "jobTitle": "Founder",
+      "worksFor": { "@id": "https://compoundlabs.studio/#organization" },
+      "url": "https://compoundlabs.studio/",
+      "sameAs": ["https://www.linkedin.com/in/lucienhopkinson/"]
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://compoundlabs.studio/#service",
+      "name": "Compound Labs",
+      "provider": { "@id": "https://compoundlabs.studio/#organization" },
+      "serviceType": "AI Strategy & Operations Consulting",
+      "areaServed": { "@type": "Place", "name": "Worldwide" },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Engagements",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Strategy & Operations", "url": "https://compoundlabs.studio/services.html#strategy" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Product Development", "url": "https://compoundlabs.studio/services.html#product" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Agent Development", "url": "https://compoundlabs.studio/services.html#agents" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Automations", "url": "https://compoundlabs.studio/services.html#automation" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Change Management", "url": "https://compoundlabs.studio/services.html#change" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ongoing Advisory", "url": "https://compoundlabs.studio/services.html#advisory" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Fractional AI Operations", "url": "https://compoundlabs.studio/services.html#fractional" } }
+        ]
+      }
+    }
+  ]
+}
+</script>
 <style>
   /* ── HERO ───────────────────────────────────────────── */
   .hero{
@@ -730,14 +791,35 @@
   },{threshold:.08,rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 
-  // modal
-  const modal=document.getElementById('modal');
-  const open=()=>{modal.classList.add('open');document.body.style.overflow='hidden'};
-  const close=()=>{modal.classList.remove('open');document.body.style.overflow=''};
-  document.querySelectorAll('[data-modal]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();open()}));
-  document.getElementById('modalClose').addEventListener('click',close);
-  modal.addEventListener('click',e=>{if(e.target===modal)close()});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+  // modal — with focus trap + return focus + ESC
+  const modal = document.getElementById('modal');
+  let lastTrigger = null;
+  const focusableSel = 'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  const open = (trigger) => {
+    lastTrigger = trigger || document.activeElement;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    const first = modal.querySelector(focusableSel);
+    if (first) setTimeout(() => first.focus(), 60);
+  };
+  const close = () => {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    if (lastTrigger && typeof lastTrigger.focus === 'function') lastTrigger.focus();
+  };
+  document.querySelectorAll('[data-modal]').forEach(el => el.addEventListener('click', e => { e.preventDefault(); open(el); }));
+  document.getElementById('modalClose').addEventListener('click', close);
+  modal.addEventListener('click', e => { if (e.target === modal) close(); });
+  document.addEventListener('keydown', e => {
+    if (!modal.classList.contains('open')) return;
+    if (e.key === 'Escape') { close(); return; }
+    if (e.key !== 'Tab') return;
+    const f = Array.from(modal.querySelectorAll(focusableSel)).filter(el => !el.hasAttribute('disabled'));
+    if (!f.length) return;
+    const first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
   // contact form → Formsubmit.co (delivers POST as email; no backend required)
   // First submission triggers a one-time confirmation email to the recipient.
   // Swap to hello@compoundlabs.studio once the alias is configured in Google Workspace.
