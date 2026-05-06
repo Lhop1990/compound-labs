@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Compound Labs — An AI Operations Studio</title>
-<meta name="description" content="An AI Operations Studio. AI strategy, products, agents, automation, change management, advisory, and fractional operations for businesses ready to ship.">
+<title>Compound Labs — An AI Strategy &amp; Operations Studio</title>
+<meta name="description" content="An AI Strategy &amp; Operations Studio. AI strategy, products, agents, automation, change management, advisory, and fractional operations for businesses ready to ship.">
 <meta name="theme-color" content="#F4F0E6">
-<meta property="og:title" content="Compound Labs — An AI Operations Studio">
+<meta property="og:title" content="Compound Labs — An AI Strategy &amp; Operations Studio">
 <meta property="og:description" content="AI strategy, products, agents, and ongoing operations for businesses ready to ship.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Compound Labs">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Compound Labs — An AI Operations Studio">
+<meta name="twitter:title" content="Compound Labs — An AI Strategy &amp; Operations Studio">
 <meta name="twitter:description" content="AI strategy, products, agents, and ongoing operations for businesses ready to ship.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -100,15 +100,15 @@
     font-family:var(--serif);font-size:4.4em;float:left;line-height:.85;
     margin:.05em .12em -.02em 0;color:var(--ink);font-weight:400;
   }
-  .premise-body strong{color:var(--ink);font-weight:500;font-style:italic;font-family:var(--serif);font-size:1.05em}
+  .premise-body strong{color:var(--ink);font-weight:500}
 
   .stats{
-    display:grid;grid-template-columns:1fr 1fr;gap:0;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:0;
     margin-top:64px;border-top:1px solid var(--rule-strong);
   }
   .stat{padding:32px 0 0;position:relative}
-  .stat:nth-child(2){padding-left:36px;border-left:1px solid var(--rule)}
-  .stat-fig{font-family:var(--serif);font-size:clamp(3rem,6vw,5rem);line-height:1;letter-spacing:-.02em}
+  .stat + .stat{padding-left:28px;border-left:1px solid var(--rule)}
+  .stat-fig{font-family:var(--serif);font-size:clamp(2.6rem,5vw,4.4rem);line-height:1;letter-spacing:-.02em}
   .stat-fig em{font-style:italic;color:var(--vermillion)}
   .stat-cap{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin-top:14px;line-height:1.6;max-width:24ch}
 
@@ -119,18 +119,38 @@
   .foundation-h em{font-style:italic;color:var(--vermillion-deep)}
   .foundation-body{padding-top:14px;border-top:1px solid var(--rule);margin-top:8px}
   .foundation-body p{font-size:17px;line-height:1.7;color:var(--ink-soft);margin:24px 0 0;max-width:54ch}
-  .foundation-body strong{color:var(--ink);font-weight:500;font-style:italic;font-family:var(--serif);font-size:1.05em}
+  .foundation-body strong{color:var(--ink);font-weight:500}
 
-  .pillars{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:0;
-    margin-top:56px;border-top:1px solid var(--rule-strong);
+  /* the mark · explained */
+  .thesis{
+    max-width:var(--max);margin:96px auto 0;
+    display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:72px;
+    align-items:center;
+    padding-top:56px;border-top:1px solid var(--rule-strong);
   }
-  .pillar{padding:28px 24px 0 0;border-right:1px solid var(--rule)}
-  .pillar:last-child{border-right:none;padding-right:0}
-  .pillar:not(:first-child){padding-left:24px}
-  .pillar-num{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--ink-soft);margin-bottom:14px}
-  .pillar-name{font-family:var(--serif);font-size:1.4rem;line-height:1.1;letter-spacing:-.012em;color:var(--ink)}
-  .pillar-name em{font-style:italic}
+  .thesis-mark{
+    width:100%;max-width:280px;aspect-ratio:1;color:var(--ink);justify-self:start;
+  }
+  .thesis-cap{max-width:54ch}
+  .thesis-tag{
+    font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-soft);margin-bottom:20px;display:flex;align-items:center;gap:12px;
+  }
+  .thesis-tag::before{content:'';width:24px;height:1px;background:var(--vermillion)}
+  .thesis-cap p{
+    font-family:var(--serif);font-size:clamp(1.4rem,2vw,1.8rem);line-height:1.35;
+    letter-spacing:-.008em;color:var(--ink);
+  }
+  .thesis-cap p + p{margin-top:18px;font-size:clamp(1.05rem,1.4vw,1.2rem);color:var(--ink-soft);line-height:1.5}
+  .thesis-cap strong{font-weight:500;color:var(--ink)}
+  .thesis-cap .ai-dot{color:var(--vermillion);font-style:normal}
+
+  /* sources note */
+  .stats-source{
+    margin-top:24px;padding-top:14px;border-top:1px solid var(--rule);
+    font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--ink-faint);line-height:1.7;
+  }
 
   /* ── PULL QUOTE ─────────────────────────────────────── */
   .quote{padding:140px var(--pad);border-top:1px solid var(--rule);position:relative;z-index:2;background:var(--paper-deep)}
@@ -204,7 +224,20 @@
   .studio-body{padding-top:14px;border-top:1px solid var(--rule);margin-top:8px}
   .studio-body p{font-size:17px;line-height:1.72;color:var(--ink-soft);margin:24px 0 0;max-width:54ch}
   .studio-body p:first-of-type{margin-top:24px}
-  .studio-body strong{color:var(--ink);font-weight:500;font-style:italic;font-family:var(--serif);font-size:1.05em}
+  .studio-body strong{color:var(--ink);font-weight:500}
+  .studio-meta .founder-name{color:var(--ink);letter-spacing:.16em}
+  .studio-link{color:var(--ink);border-bottom:1px solid var(--rule);padding-bottom:2px;transition:color .2s,border-color .2s}
+  .studio-link:hover{color:var(--vermillion);border-color:var(--vermillion)}
+  .studio-signoff{
+    margin-top:36px!important;padding-top:20px;border-top:1px solid var(--rule);
+    font-family:var(--serif);font-style:italic;font-size:1.15rem;
+    color:var(--ink);max-width:none!important;
+  }
+  .signoff-link{
+    color:var(--ink);border-bottom:1px solid var(--rule);
+    transition:color .2s,border-color .2s;font-style:italic;
+  }
+  .signoff-link:hover{color:var(--vermillion);border-color:var(--vermillion)}
 
   .studio-creds{
     display:grid;grid-template-columns:1fr 1fr;gap:0;
@@ -259,9 +292,8 @@
   /* ── PAGE-SPECIFIC RESPONSIVE ───────────────────────── */
   @media (max-width:1100px){
     .premise-grid,.studio-grid,.foundation-grid{grid-template-columns:1fr;gap:48px}
-    .pillars{grid-template-columns:1fr;gap:0}
-    .pillar{border-right:none;border-bottom:1px solid var(--rule);padding:24px 0!important}
-    .pillar:last-child{border-bottom:none}
+    .thesis{grid-template-columns:1fr;gap:36px;margin-top:64px}
+    .thesis-mark{justify-self:center;max-width:220px}
     .svc-row{grid-template-columns:48px minmax(0,1fr) minmax(0,1.4fr) 80px;gap:24px}
     .hero-foot{grid-template-columns:1fr;gap:32px;align-items:start}
     .hero-actions{flex-direction:row;align-items:center;justify-self:start}
@@ -280,7 +312,7 @@
     .studio-creds{grid-template-columns:1fr;gap:0}
     .creds-block:nth-child(2){border-left:none;border-top:1px solid var(--rule);padding-left:0;margin-top:24px;padding-top:24px}
     .stats{grid-template-columns:1fr;gap:0}
-    .stat:nth-child(2){border-left:none;border-top:1px solid var(--rule);padding-left:0;margin-top:28px;padding-top:28px}
+    .stat + .stat{border-left:none;border-top:1px solid var(--rule);padding-left:0;margin-top:28px;padding-top:28px}
     .quote-mark{font-size:5rem}
     .svc-row{grid-template-columns:36px 1fr;gap:14px;padding:24px 0}
     .svc-row .svc-desc,.svc-row .svc-arrow{display:none}
@@ -362,7 +394,7 @@
   </div>
 
   <div class="hero-foot">
-    <div class="hero-eyebrow"><span class="tag-line"></span>An AI Operations Studio</div>
+    <div class="hero-eyebrow"><span class="tag-line"></span>An AI Strategy &amp; Operations Studio</div>
     <p class="hero-lead">AI strategy, products, agents, and ongoing operations. Built for businesses ready to <em>ship</em>.</p>
     <div class="hero-actions">
       <button type="button" class="btn" data-modal>Get in touch</button>
@@ -405,18 +437,23 @@
     <div class="rv d1">
       <div class="premise-body">
         <p>Most businesses know AI matters. Very few know how to implement it in a way that creates genuine, lasting change. The gap between awareness and execution is widening every month.</p>
-        <p>Compound Labs brings deep AI capability together with the operational experience of building and scaling companies from zero. Our recommendations aren't just technically sound. <strong>They're built around how organisations actually work, grow, and succeed.</strong></p>
+        <p>Compound Labs isn't another AI workflow vendor. We're a strategy and operations consultancy that has run the systems AI depends on — finance, technology, people, sales, product — and shipped AI on top of them. <strong>We can sit at the table on every system the business needs to make AI succeed</strong>, not just the model.</p>
       </div>
       <div class="stats">
         <div class="stat">
-          <div class="stat-fig">85<em>%</em></div>
-          <div class="stat-cap">of AI projects fail to reach production. Most never needed to</div>
+          <div class="stat-fig">78<em>%</em></div>
+          <div class="stat-cap">of businesses now use AI in at least one function. Up from 55% a year earlier</div>
         </div>
         <div class="stat">
-          <div class="stat-fig">10<em>×</em></div>
-          <div class="stat-cap">the pace of AI advancement vs. enterprise adoption today</div>
+          <div class="stat-fig">80<em>%</em></div>
+          <div class="stat-cap">of AI initiatives fail to deliver value. Most never invested in the foundations</div>
+        </div>
+        <div class="stat">
+          <div class="stat-fig">84<em>%</em></div>
+          <div class="stat-cap">of those failures come from people, process, and systems — not the technology</div>
         </div>
       </div>
+      <p class="stats-source">Sources · McKinsey State of AI 2025 · MIT Project NANDA 2025 · RAND / Pertama Partners 2025</p>
     </div>
   </div>
 </section>
@@ -431,16 +468,20 @@
     <div class="rv d1">
       <div class="foundation-body">
         <p>Most people promise AI is the answer. We don't.</p>
-        <p>AI is a scaling solution, not a foundation. The fundamentals that compound a business haven't changed: <strong>strong people, strong financial systems, strong technical systems</strong>.</p>
-        <p>We build AI on top of those, not in place of them. That's why our work keeps paying off long after we leave. Your team continues to innovate on what we built together, internally and externally, for years.</p>
-      </div>
-      <div class="pillars">
-        <div class="pillar"><div class="pillar-num">01</div><h3 class="pillar-name">Strong <em>people</em></h3></div>
-        <div class="pillar"><div class="pillar-num">02</div><h3 class="pillar-name">Strong <em>financial systems</em></h3></div>
-        <div class="pillar"><div class="pillar-num">03</div><h3 class="pillar-name">Strong <em>technical systems</em></h3></div>
+        <p>The businesses that win with AI are the ones who get the unglamorous part right first: <strong>strong people, strong financial systems, strong technical systems</strong>. Without those, AI compounds nothing.</p>
+        <p>So we start there. We make sure the foundations are set, then apply AI on top to deliver real improvements across the business — internally and externally. That's why the work keeps paying off long after we leave, and why your team can keep building on it for years.</p>
       </div>
     </div>
   </div>
+
+  <figure class="thesis rv">
+    <svg class="thesis-mark" viewBox="0 0 220 220" aria-label="Compound Labs mark"><use href="#cl-logo"/></svg>
+    <figcaption class="thesis-cap">
+      <div class="thesis-tag">The mark · explained</div>
+      <p>Our logo is the thesis. Three circles for the foundations every business compounds on — <strong>people</strong>, <strong>financial systems</strong>, <strong>technical systems</strong>. The small mark at the centre <span class="ai-dot">●</span> is AI. It only adds value where the three converge.</p>
+      <p>Get the foundations right and AI compounds them. Skip them and AI compounds nothing.</p>
+    </figcaption>
+  </figure>
 </section>
 
 <!-- PULL QUOTE -->
@@ -448,7 +489,7 @@
   <div class="quote-inner">
     <span class="quote-mark rv">“</span>
     <p class="quote-text rv d1">The teams that win this decade<br>won't be the ones using AI.<br>They'll be the ones <em>built around it</em>.</p>
-    <div class="quote-attr rv d2">Compound Labs · Operating thesis · 2025</div>
+    <div class="quote-attr rv d2">Compound Labs · Operating thesis</div>
   </div>
 </section>
 
@@ -484,7 +525,7 @@
       <a href="services.html#automation" class="svc-row rv">
         <div class="svc-num">§ 04</div>
         <div class="svc-name">AI <em>Automations</em><span class="dot-leader"></span></div>
-        <div class="svc-desc">Targeted automation that removes friction. Most engagements pay for themselves inside a quarter.</div>
+        <div class="svc-desc">Targeted automation that removes friction. Scoped to time, cost, or risk recovered — measured before and after.</div>
         <div class="svc-arrow"><span>Read</span><span class="arr">→</span></div>
       </a>
       <a href="services.html#change" class="svc-row rv">
@@ -540,17 +581,20 @@
     <div class="studio-grid">
       <div class="rv">
         <div class="section-tag"><b>§ 05</b> &nbsp;·&nbsp; About Us</div>
-        <h2 class="studio-h">Fifteen years across<br>the <em>full lifecycle</em>.</h2>
+        <h2 class="studio-h">Strategy and operations <em>first</em>.<br>AI on <em>top</em>.</h2>
         <div class="studio-meta">
-          <div class="row">Enterprise · Pre-seed · Pre-product · Pre-revenue</div>
-          <div class="row">Series A · Series B · And everything in between</div>
+          <div class="row"><span class="founder-name">Lucien Hopkinson</span> · Founder</div>
+          <div class="row"><a href="https://www.linkedin.com/in/lucienhopkinson/" class="studio-link" target="_blank" rel="me noopener">LinkedIn&nbsp;↗</a></div>
+          <div class="row">Fifteen years across the full lifecycle</div>
+          <div class="row">Enterprise · Pre-seed · Series A · Series B · And every stage between</div>
         </div>
       </div>
       <div class="rv d1">
         <div class="studio-body">
-          <p>I started in large enterprises before moving into startups. The last decade I've spent inside <strong>pre-seed, pre-product, pre-revenue</strong> companies and the work of getting them to the other side. My current role is leading inside a Series B business growing fast.</p>
-          <p>That arc gives me a working perspective on every function it takes to compound a company from zero. Strategy. People. Operations. Sales. Account management. <strong>I've owned most of them at some point.</strong></p>
-          <p>For the last two years I've been running AI operations inside a fast-growing business. I built and applied the strategies that turned it into an <strong>AI-first organisation</strong>. Compound Labs is where I bring that work to other companies.</p>
+          <p>Before AI, the work was operational strategy. I started in large enterprises before moving into startups. The last decade I've spent inside <strong>pre-seed, pre-product, pre-revenue</strong> companies and the work of getting them to the other side. My current role is leading inside a Series B business growing fast.</p>
+          <p>That arc gives me a working perspective on every function it takes to compound a company from zero. Strategy. People. Operations. Sales. Account management. Product. <strong>I've owned most of them at some point</strong> — which is why Compound Labs can sit at the table on every system AI touches, not just the model.</p>
+          <p>For the last two years I've been running AI operations inside a fast-growing business — building and applying the strategies that turned it into an <strong>AI-first organisation</strong>. Compound Labs is where I bring that work, and that operating perspective, to other companies.</p>
+          <p class="studio-signoff">— <a href="https://www.linkedin.com/in/lucienhopkinson/" class="signoff-link" target="_blank" rel="me noopener">Lucien Hopkinson</a>, Compound Labs · May 2026</p>
         </div>
         <div class="studio-creds">
           <div class="creds-block">
@@ -601,7 +645,7 @@
           <svg><use href="#cl-logo"/></svg>
           <span>Compound&nbsp;Labs</span>
         </div>
-        <p class="ft-brand-tag">An AI Operations Studio for businesses building the next decade of category-defining companies.</p>
+        <p class="ft-brand-tag">An AI Strategy &amp; Operations Studio for businesses building the next decade of category-defining companies.</p>
       </div>
       <div class="ft-col">
         <div class="ft-col-h">Practice</div>
@@ -627,7 +671,8 @@
       <div class="ft-col">
         <div class="ft-col-h">Elsewhere</div>
         <ul>
-          <li><a href="mailto:hello@compoundlabs.co">Email</a></li>
+          <li><a href="mailto:hello@compoundlabs.studio">Email</a></li>
+          <li><a href="https://www.linkedin.com/in/lucienhopkinson/" target="_blank" rel="me noopener">LinkedIn</a></li>
         </ul>
       </div>
     </div>
@@ -725,10 +770,36 @@
   document.getElementById('modalClose').addEventListener('click',close);
   modal.addEventListener('click',e=>{if(e.target===modal)close()});
   document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
-  document.getElementById('contactForm').addEventListener('submit',e=>{
+  // contact form → Formsubmit.co (delivers POST as email; no backend required)
+  // First submission triggers a one-time confirmation email to the recipient.
+  // Swap to hello@compoundlabs.studio once the alias is configured in Google Workspace.
+  const FORM_ENDPOINT = 'https://formsubmit.co/ajax/lucien@compoundlabs.studio';
+  const contactForm = document.getElementById('contactForm');
+  const modalFormEl = document.getElementById('modalForm');
+  const modalThanksEl = document.getElementById('modalThanks');
+  contactForm.addEventListener('submit', async e => {
     e.preventDefault();
-    document.getElementById('modalForm').style.display='none';
-    document.getElementById('modalThanks').style.display='block';
+    const submitBtn = contactForm.querySelector('.modal-submit');
+    const originalLabel = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    const data = Object.fromEntries(new FormData(contactForm).entries());
+    data._subject = `New enquiry · ${data.business || data.first || 'Compound Labs'}`;
+    data._template = 'table';
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error('send failed');
+      modalFormEl.style.display = 'none';
+      modalThanksEl.style.display = 'block';
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalLabel;
+      alert("Couldn't send right now — please email lucien@compoundlabs.studio directly.");
+    }
   });
 </script>
 </body>
