@@ -24,7 +24,10 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap"></noscript>
 <link rel="stylesheet" href="styles.css">
-<script defer data-domain="compoundlabs.studio" src="https://plausible.io/js/script.js"></script>
+<!-- Google Search Console verification — paste meta value below when issued -->
+<!-- <meta name="google-site-verification" content="YOUR_TOKEN_HERE"> -->
+<script defer data-domain="compoundlabs.studio" src="https://plausible.io/js/script.outbound-links.tagged-events.js"></script>
+<script>window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)}</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -813,7 +816,15 @@
     document.body.style.overflow = '';
     if (lastTrigger && typeof lastTrigger.focus === 'function') lastTrigger.focus();
   };
-  document.querySelectorAll('[data-modal]').forEach(el => el.addEventListener('click', e => { e.preventDefault(); open(el); }));
+  document.querySelectorAll('[data-modal]').forEach(el => el.addEventListener('click', e => {
+    e.preventDefault();
+    if (typeof plausible === 'function') {
+      const section = el.closest('section, nav, footer, .mobile-menu');
+      const source = section?.id || section?.tagName?.toLowerCase() || 'unknown';
+      plausible('Open Contact Modal', { props: { source, page: location.pathname } });
+    }
+    open(el);
+  }));
   document.getElementById('modalClose').addEventListener('click', close);
   modal.addEventListener('click', e => { if (e.target === modal) close(); });
   document.addEventListener('keydown', e => {
@@ -851,6 +862,9 @@
       if (!res.ok) throw new Error('send failed');
       modalFormEl.style.display = 'none';
       modalThanksEl.style.display = 'block';
+      if (typeof plausible === 'function') {
+        plausible('Submit Contact Form', { props: { page: location.pathname } });
+      }
     } catch (err) {
       submitBtn.disabled = false;
       submitBtn.textContent = originalLabel;
