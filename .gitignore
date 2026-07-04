@@ -2,3 +2,9 @@
 .claude/
 node_modules/
 *.log
+email-signature.html
+
+# added by claude-baseline
+.env
+.env.*
+!.env.example
