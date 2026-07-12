@@ -173,12 +173,15 @@
   .premise-h{font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,5.4vw,5.6rem);line-height:.95;letter-spacing:-.022em;color:var(--ink)}
   .premise-h em{font-style:italic}
   .premise-body{padding-top:14px;border-top:1px solid var(--rule);margin-top:8px}
-  .premise-body p{font-size:17px;line-height:1.7;color:var(--ink-soft);margin:24px 0 0;max-width:48ch}
-  .premise-body p:first-of-type::first-letter{
-    font-family:var(--serif);font-size:4.4em;float:left;line-height:.85;
-    margin:.05em .12em -.02em 0;color:var(--ink);font-weight:400;
+  .premise-body p{
+    font-family:var(--serif);font-size:clamp(1.2rem,1.6vw,1.4rem);
+    line-height:1.5;letter-spacing:.002em;color:var(--ink-soft);margin:26px 0 0;max-width:44ch;
   }
-  .premise-body strong{color:var(--ink);font-weight:500}
+  .premise-body p:first-of-type::first-letter{
+    font-size:3.9em;float:left;line-height:.85;
+    margin:.06em .14em -.02em 0;color:var(--ink);font-weight:400;
+  }
+  .premise-body strong{color:var(--ink);font-weight:400;font-style:italic}
 
   /* fig. 01 — the compounding curve */
   .curve{margin-top:56px;max-width:520px}
@@ -215,8 +218,12 @@
   .foundation-h{font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,5.4vw,5.6rem);line-height:.95;letter-spacing:-.022em;color:var(--ink)}
   .foundation-h em{font-style:italic;color:var(--vermillion-deep)}
   .foundation-body{padding-top:14px;border-top:1px solid var(--rule);margin-top:8px}
-  .foundation-body p{font-size:17px;line-height:1.7;color:var(--ink-soft);margin:24px 0 0;max-width:54ch}
-  .foundation-body strong{color:var(--ink);font-weight:500}
+  .foundation-body p{
+    font-family:var(--serif);font-size:clamp(1.2rem,1.6vw,1.4rem);
+    line-height:1.5;letter-spacing:.002em;color:var(--ink-soft);margin:26px 0 0;max-width:48ch;
+  }
+  .foundation-body p:first-of-type{font-size:clamp(1.35rem,1.9vw,1.6rem);color:var(--ink)}
+  .foundation-body strong{color:var(--ink);font-weight:400;font-style:italic}
 
   /* sources note */
   .stats-source{
@@ -312,9 +319,12 @@
   .studio-meta .row{display:flex;align-items:center;gap:14px}
   .studio-meta .row::before{content:'';width:18px;height:1px;background:var(--vermillion);flex-shrink:0}
   .studio-body{padding-top:14px;border-top:1px solid var(--rule);margin-top:8px}
-  .studio-body p{font-size:17px;line-height:1.72;color:var(--ink-soft);margin:24px 0 0;max-width:54ch}
-  .studio-body p:first-of-type{margin-top:24px}
-  .studio-body strong{color:var(--ink);font-weight:500}
+  .studio-body p{
+    font-family:var(--serif);font-size:clamp(1.2rem,1.6vw,1.4rem);
+    line-height:1.5;letter-spacing:.002em;color:var(--ink-soft);margin:26px 0 0;max-width:48ch;
+  }
+  .studio-body p:first-of-type{margin-top:26px}
+  .studio-body strong{color:var(--ink);font-weight:400;font-style:italic}
   .studio-meta .founder-name{color:var(--ink);letter-spacing:.16em}
   .studio-link{color:var(--ink);border-bottom:1px solid var(--rule);padding-bottom:2px;transition:color .2s,border-color .2s}
   .studio-link:hover{color:var(--vermillion);border-color:var(--vermillion)}
